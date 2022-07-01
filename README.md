@@ -1,4 +1,7 @@
 # ThemeSwitcherScripts
+
+EN:
+
 Collection of batch scripts to change the appearance of the Windows 8+ user interface. An extension of the .theme ini files.
 
 To be able to use these scripts, you must have installed:
@@ -10,6 +13,8 @@ To be able to use these scripts, you must have installed:
 In addition, you must have completed the first 6 steps of this tutorial: https://github.com/valinet/ExplorerPatcher/discussions/167.
 
 Finally, you must have created a scheduled task named _BasicTheme_, with the user logon as the trigger, and the command _C:\BasicTheme\BasicThemer2.exe_ as the action. The box _Only start the task if the computer is connected to the power source_ must be unchecked, the box _Run with maximum permissions_ must be checked, and the button _Run only if the user is logged on_ must be be selected.
+
+FR:
 
 Collection de scripts de commandes Windows pour changer de manière groupée l'apparence de l'interface utilisateur des Windows ultérieurs à Windows 7. Il s'agit en quelque sorte d'une extension des fichier ini de configuration avec l'extension .theme.
 
