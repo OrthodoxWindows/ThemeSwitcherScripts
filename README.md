@@ -11,6 +11,8 @@ In addition, you must have completed the first 6 steps of this tutorial: https:/
 
 Finally, you must have created a scheduled task named _BasicTheme_, with the user logon as the trigger, and the command _C:\BasicTheme\BasicThemer2.exe_ as the action. The box _Only start the task if the computer is connected to the power source_ must be unchecked, the box _Run with maximum permissions_ must be checked, and the button _Run only if the user is logged on_ must be be selected.
 
+Collection de scripts de commandes Windows pour changer de manière groupée l'apparence de l'interface utilisateur des Windows ultérieurs à Windows 7. Il s'agit en quelque sorte d'une extension des fichier ini de configuration avec l'extension .theme.
+
 Pour pouvoir utiliser ces scripts, vous devez avoir installer :
 
 - ThemeSwitcher (https://winaero.com/winaero-theme-switcher/), dans le répertoire : _C:\ThemeSwitcher\Windows 8\ThemeSwitcher.exe_
