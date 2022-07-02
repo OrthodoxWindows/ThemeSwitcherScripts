@@ -28,3 +28,4 @@ De plus, vous devez avoir réalisé les 6 premières étape de ce tutoriel : htt
 
 Enfin, vous devez avoir créé une tâche planifié nommée _BasicTheme_, avec comme déclencheur l'ouverture de session d'un utilisateur, et comme action la commande _C:\BasicTheme\BasicThemer2.exe_. La case _Ne démarrer la tâche que si l'ordinateur est relié au secteur_ doit être décochée, la case _Exécuter avec les autorisations maximales_ doit être cochée, et le bouton _N'exécuter que si l'utilisateur est connecté_ doit être sélectionner.
 
+![cmd_dVFuaVIWbk](https://user-images.githubusercontent.com/100134023/177014021-419b31c8-3530-4850-bdc6-c7009c575cad.png)
