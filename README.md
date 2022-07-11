@@ -4,7 +4,7 @@
 
 EN:
 
-Collection of batch scripts to change the appearance of the Windows 8+ user interface. An extension of the .theme ini files.
+Collection of batch scripts to change the appearance of the Windows 10 1809+ (Windows 8+ in the future) user interface. An extension of the .theme ini files.
 
 To be able to use these scripts, you must have installed:
 
@@ -21,11 +21,11 @@ Theme Switcher Scripts supports custom visual styles with a system patched with 
 
 Multi-user support:
 Currently, Theme SwitcherScripts does not support having different themes across multiple user sessions.
-The problem comes from the unsuitability of the scheduled tasks for a multi-user system. For Basic theme, it's not a big deal, because BasicThemer2 can start after explorer.exe (BasicThemer2 changes windows on the fly), but it's more complicated for Classic theme, because ClassicThemeTray has to start before explorer.exe ( otherwise, explorer.exe will not start with the classic theme).
+The problem comes from the unsuitability of the scheduled tasks for a multi-user system. For Basic theme, it's not a big deal, because BasicThemer2 can start after explorer.exe (BasicThemer2 changes windows on the fly), but it's more complicated for Classic theme, because ClassicThemeTray has to start before explorer.exe (otherwise, explorer.exe will not start with the classic theme).
 
 FR:
 
-Collection de scripts de commandes Windows pour changer de manière groupée l'apparence de l'interface utilisateur des Windows ultérieurs à Windows 7. Il s'agit en quelque sorte d'une extension des fichier ini de configuration avec l'extension .theme.
+Collection de scripts de commandes Windows pour changer de manière groupée l'apparence de l'interface utilisateur des Windows ultérieurs à Windows 10 1803 (ultérieur à Windows 7 dans le future). Il s'agit en quelque sorte d'une extension des fichier de configuration ini avec l'extension .theme.
 
 Pour pouvoir utiliser ces scripts, vous devez avoir installer :
 
