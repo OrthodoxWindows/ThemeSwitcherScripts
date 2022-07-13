@@ -24,7 +24,7 @@ echo Le thème classique a été désactivé) else (echo Le thème classique est
 start %userprofile%\TSS\classic\classicthemetray_old.exe /disable
 
 Set BT2=BasicThemer2.exe
-tasklist | find /i "%BT2%">nul  && echo BasicThemer2 n'est pas en cours d'exécution || (start C:\TSS\BasicTheme\BasicThemer2.exe)
+tasklist | find /i "%BT2%">nul  && echo AC || (start C:\TSS\BasicTheme\BasicThemer2.exe)
 if exist %userprofile%\tss\basic\BasicThemer2.exe (echo Le thème basic est déjà activé) else (ren "%userprofile%\tss\basic\BasicThemer2_old.exe" BasicThemer2.exe
 echo Le thème basic a été activé)
 
