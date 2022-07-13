@@ -22,7 +22,7 @@ if exist %userprofile%\tss\classic\classicthemetray.exe (echo The classic theme 
 echo The classic theme has been activated)
 
 Set BT2=basicthemer2.exe
-tasklist | find /i "%BT2%">nul  && (TASKKILL /f /im BasicThemer2.exe) || echo 0
+tasklist | find /i "%BT2%">nul  && (TASKKILL /f /im BasicThemer2.exe) || echo INA
 if exist %userprofile%\tss\basic\basicthemer2.exe (ren "%userprofile%\tss\basic\basicthemer2.exe" BasicThemer2_old.exe
 echo The basic theme has been disabled) else (echo The basic theme is already disabled)
 
