@@ -13,20 +13,20 @@ if "%errorlevel%"=="1" echo Auteur : OrthodoxWin32 Type de thème : basic Param�
 if "%errorlevel%"=="2" REM pause
 
 set /P c=Voulez-vous appliquer le thème d'exemple ?[Y\N]?
-if /I "%c%" EQU "Y" (start C:\ThemeSwitcher\Window~2\ThemeSwitcher.exe Exemple.theme
+if /I "%c%" EQU "Y" (Start %userprofile%\ThemeSwitcher\ThemeSwitcher.exe Exemple.theme
 goto :CTT)
 if /I "%c%" EQU "N" (goto :ANNULATION)
 
 :CTT
-if exist C:\Classic\ClassicThemeTray.exe (ren "C:\Classic\ClassicThemeTray.exe" ClassicThemeTray_old.exe
+if exist %userprofile%\tss\classic\classicthemetray.exe (ren "%userprofile%\tss\classic\classicthemetray.exe" ClassicThemeTray_old.exe
 echo Le thème classique a été désactivé) else (echo Le thème classique est déjà désactivé)
 
-start C:\Classic\ClassicThemeTray_old.exe /disable
+start %userprofile%\TSS\classic\classicthemetray_old.exe /disable
 
 Set BT2=BasicThemer2.exe
-tasklist | find /i "%BT2%">nul  && echo Le thème basic est déjà activé || (start C:\Basic\BasicThemer2.exe
-schtasks.exe /change /tn BasicTheme /ENABLE
-echo Le thème basique a été activé)
+tasklist | find /i "%BT2%">nul  && echo BasicThemer2 n'est pas en cours d'exécution || (start C:\TSS\BasicTheme\BasicThemer2.exe)
+if exist %userprofile%\tss\basic\BasicThemer2.exe (echo Le thème basic est déjà activé) else (ren "%userprofile%\tss\basic\BasicThemer2_old.exe" BasicThemer2.exe
+echo Le thème basic a été activé)
 
 set /P c=Voulez-vous redémarrer l'explorateur ?[Y\N]?
 if /I "%c%" EQU "Y" (TASKKILL /f /im explorer.exe
