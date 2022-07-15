@@ -1,12 +1,12 @@
 @echo off
 chcp 65001 > nul
 
-echo *************************
-echo *       Thème DWM       *
-echo *************************
+echo **************************
+echo *    Thème DWM-Effets    *
+echo **************************
 echo.
 
-set /P c=Voulez-vous appliquer le thème DWM ?[Y\N]?
+set /P c=Voulez-vous appliquer le thème DWM-Effets ?[Y\N]?
 if /I "%c%" EQU "Y" (goto :CTT)
 if /I "%c%" EQU "N" (goto :ANNULATION)
 
