@@ -1,15 +1,15 @@
 @echo off
 chcp 65001 > nul
 
-echo ************************************************************
-echo *                  Exemple de Thème DWM                    *
-echo *                                                          *
-echo * Appuyer sur I pour plus d'informations, C pour continuer *
-echo ************************************************************
+echo *************************************************************
+echo *                Exemple de Thème DWM-Effets                *
+echo *                                                           *
+echo * Appuyer sur I pour plus d'informations, C pour continuer  *
+echo *************************************************************
 echo.
 
 CHOICE /C IC
-if "%errorlevel%"=="1" echo Auteur : OrthodoxWin32 Type de thème : DWM Paramètres définis : Il s'agit d'un thème d'exemple, inactif. L'erreur de ThemeSwitcher est normal.
+if "%errorlevel%"=="1" echo Auteur : OrthodoxWin32 Type de thème : DWM-Effets Paramètres définis : Il s'agit d'un thème d'exemple, inactif. L'erreur de ThemeSwitcher est normal.
 if "%errorlevel%"=="2" REM pause
 
 set /P c=Voulez-vous appliquer le thème d'exemple ?[Y\N]?
