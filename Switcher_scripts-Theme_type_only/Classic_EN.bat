@@ -2,7 +2,7 @@
 chcp 65001 > nul
 
 echo ***************************
-echo *     Classique Theme     *
+echo *      Classic Theme      *
 echo ***************************
 echo.
 
