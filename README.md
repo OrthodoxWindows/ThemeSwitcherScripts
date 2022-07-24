@@ -34,8 +34,9 @@ Theme Switcher Scripts supports custom visual styles with a system patched with 
 Multi-user support:
 ~~Currently, Theme SwitcherScripts does not support having classic themes across multiple user sessions.
 The problem comes from the unsuitability of the scheduled tasks for a multi-user system.~~ For Basic theme, it's not a big deal, because BasicThemer2 can start after explorer.exe (BasicThemer2 changes windows on the fly), but it's more complicated for Classic theme, because ClassicThemeTray has to start before explorer.exe (otherwise, explorer.exe will not start with the classic theme).
-__It is important to add the files to the user folder with the %userprofile% environment variable, as this allows multi-user support for the basic theme, and soon for the classic theme.
-I found a way to add support for multiple user accounts with the classic theme. I will post this change soon.__
+__It is important to add the files to the user folder with the %userprofile% environment variable, as this allows multi-user support for the basic theme, and soon for the classic theme.__
+
+__I found a way to add support for multiple user accounts with the classic theme. I will post this change soon.__
 
 
 FR:
@@ -70,5 +71,6 @@ Theme Switcher Scripts supporte les styles visuels personnalisés avec un systè
 Support Multi-utilisateur :
 ~~Pour l'instant, Theme SwitcherScripts ne supporte pas la présence du thèmes classique sur plusieurs sessions utilisateurs.
 Le problème vient de l'inadaptation des tâches planifiés pour un système multi-utilisateur.~~ Pour le thème Basic, ce n'est pas très grave, car BasicThemer2 peut démarrer après explorer.exe (BasicThemer2 modifie les fenêtres à la volée), mais cela est plus compliqué pour le thème classique, car ClassicThemeTray doit démarrer avant explorer.exe (sinon, explorer.exe ne démarre pas avec le thème classique).
-__Il est important d'ajouter les fichier dans le dossier utilisateur avec la variable d'envirronement %userprofile%, car cela permet le support multi-utilisateur pour le thème basic, et prochainement pour le thème classique.
-J'ai trouvé un moyen d'ajouter la prise en charge de plusieurs comptes utilisateurs avec le thème classique. Je vais publier ce changement prochainement.__
+__Il est important d'ajouter les fichier dans le dossier utilisateur avec la variable d'envirronement %userprofile%, car cela permet le support multi-utilisateur pour le thème basic, et prochainement pour le thème classique.__
+
+__J'ai trouvé un moyen d'ajouter la prise en charge de plusieurs comptes utilisateurs avec le thème classique. Je vais publier ce changement prochainement.__
