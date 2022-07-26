@@ -52,7 +52,7 @@ Support for custom visual styles:
 Theme Switcher Scripts supports custom visual styles with a system patched with Tools like UXThemePatcher or UXStyle. However, Theme SwitcherScript currently does not support SecureUXTheme (https://github.com/namazso/SecureUxTheme/issues/108).
 
 Multi-user support:
-__It is important to add the files to the user folder with the %userprofile% environment variable, as this allows multi-user support.__ That is, the ability to simultaneously run, for example, the DWM-styled theme (default theme) on User A, the Basic theme on User B, and the Classic theme on User C.
+__It is important to add the files to the user folder with the %userprofile% environment variable, as this allows multi-user support.__ That is, the ability to simultaneously run, for example, the DWM-styled theme (defaut visual style) on User A, the Basic theme on User B, and the Classic theme on User C.
 For the moment, it is impossible to install ThemeSwitcherScripts on part of the user accounts. It must be installed on all visible accounts (invisible accounts do not count).
 
 FR:
@@ -97,5 +97,5 @@ Support des styles visuels personnalisées :
 Theme Switcher Scripts supporte les styles visuels personnalisés avec un système patché avec des Outils comme UXThemePatcher ou UXStyle. Par contre, Theme SwitcherScript ne supporte pour le moment pas SecureUXTheme (https://github.com/namazso/SecureUxTheme/issues/108).
 
 Support Multi-utilisateur :
-__Il est important d'ajouter les fichier dans le dossier utilisateur avec la variable d'envirronement %userprofile%, car cela permet le support multi-utilisateur.__ Cela ajoute la capacité d'exécuter simultanément, par exemple, le thème DWM-styled (defaut theme) sur l'utilisateur A, le thème Basic sur l'utilisateur B et le thème Classic sur l'utilisateur C.
+__Il est important d'ajouter les fichier dans le dossier utilisateur avec la variable d'envirronement %userprofile%, car cela permet le support multi-utilisateur.__ Cela ajoute la capacité d'exécuter simultanément, par exemple, le thème DWM-styled (style visuel par défaut) sur l'utilisateur A, le thème Basic sur l'utilisateur B et le thème Classic sur l'utilisateur C.
 Pour le moment, il est impossible d'installer ThemeSwitcherScripts sur une partie des comptes utilisateurs. Il faut l'installer sur tout les comptes visible (et non pas les comptes invisibles).
