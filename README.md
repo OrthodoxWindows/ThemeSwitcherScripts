@@ -18,26 +18,46 @@ Supported tools are, or will be added soon:
 - Many taskbar customization tools
 - Many file explorer customization tools
 
-To be able to use these scripts, you must have installed in each user profile :
+To be able to use these scripts, you must have followed these steps :
 
-- ThemeSwitcher (https://winaero.com/winaero-theme-switcher/), in the directory: _%userprofile%\TSS\ThemeSwitcher\ThemeSwitcher.exe_
-- ClassicThemeTray (https://github.com/spitfirex86/ClassicThemeTray), in the directory : _%userprofile%\TSS\Classic\ClassicThemeTray.exe_
-- BasicThemer2 (https://github.com/Ingan121/BasicThemer2), in the directory : _%userprofile%\TSS\Basic\BasicThemer2.exe_
+So here is the way to add multi-user support to ThemeSwitcherScript. That is, the ability to simultaneously run, for example, the DWM-styled theme (default theme) on User A, the Basic theme on User B, and the Classic theme on User C.
 
-In addition, you must have completed the first 6 steps of this tutorial: https://github.com/valinet/ExplorerPatcher/discussions/167.
+Thanks to @anixx for the original idea of the classic theme by scheduled tasks ( winclassic.boards.net/thread/990/windows-classic-theme-on-1903 ).
 
-Finally, you must have created a scheduled task named _BasicTheme_, with the user logon as the trigger, and the command _C:\BasicTheme\BasicThemer2.exe_ as the action. The box _Only start the task if the computer is connected to the power source_ must be unchecked, the box _Run with maximum permissions_ must be checked, and the button _Run only if the user is logged on_ must be be selected.
+1. move basicthemer2.exe to %userprofile%\TSS\basic
+
+2. move classicthemetray.exe to %userprofile%\TSS\classic
+
+3. Repeat copying basicthemer2.exe to %userprofile%\TSS\basic and classicthemetray.exe to %userprofile%\TSS\classic for all other user accounts
+
+4. In the task scheduler, create a scheduled task named basic, with commands in order: %userprofile%\TSS\basic\basicthemer2.exe, C:\Windows\System32\schtasks.exe /run /tn classic2, as a trigger for all users to login, and the BUILTIN\Users group for task execution. Check the Run with maximum permissions box case
+
+5. Create a scheduled task named classic, with the following commands: C:\Windows\System32\schtasks.exe /run /tn Apps, %userprofile%\TSS\classic\classicthemetray.exe / enable, C:\Windows\System32\schtasks.exe /run /tn classic2 as the trigger for all user login, and the BUILTIN\Users group for task execution. Check the Run with maximum permissions box case
+
+6. Create a task named classic2, with the command C:\Windows\System32\cmd.exe /c start userinit.exe, with the group BUILTIN\Users for the execution of the task, and select in the parameters of the task the rule If the task is already running, the following rule applies : Do not start a new instance
+7. Create a task named Apps, with command C:\Windows\System32\cmd.exe /c start C:\Windows\System32\ApplicationFrameHost.exe, with group BUILTIN\Users for task execution
+8. Make sure all tasks are configured to run on any power mode.
+9. Import this registry file ( /!\ WARNING, it is important to save the previous key before modifying /!\ ) :
+Windows Registry Editor Version 5.00
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon]
+"Userinit"=""
+
+10. Use the scripts contained in ThemeSwitcherScript first release : github.com/OrthodoxWindows/ThemeSwitcherScripts/releases/tag/Release-1.0
+
+It works on my system, but nothing tells me that it will work on other systems. It is therefore important to test it by taking maximum precautions. Please let me know if it works or not. When I'm sure it works, I could write an automatic installation script.
+
+For the moment, it is impossible to install ThemeSwitcherScripts on part of the user accounts. It must be installed on all visible accounts (invisible accounts do not count).
+
+WARNING : The _BUILTIN\Users_ group depends on the system language ; for example, on my system, the group is named _BUILTIN\Utilisateurs_.
+
+To add support for .theme files, you need to copy winaero themeswitcher to _%userprofile%\TSS\themeswitcher\_. Choose the version for Windows 8 (and not for Windows 7). https://winaero.com/winaero-theme-switcher/
 
 Support for custom visual styles:
 Theme Switcher Scripts supports custom visual styles with a system patched with Tools like UXThemePatcher or UXStyle. However, Theme SwitcherScript currently does not support SecureUXTheme (https://github.com/namazso/SecureUxTheme/issues/108).
 
 Multi-user support:
-~~Currently, Theme SwitcherScripts does not support having classic themes across multiple user sessions.
-The problem comes from the unsuitability of the scheduled tasks for a multi-user system.~~ For Basic theme, it's not a big deal, because BasicThemer2 can start after explorer.exe (BasicThemer2 changes windows on the fly), but it's more complicated for Classic theme, because ClassicThemeTray has to start before explorer.exe (otherwise, explorer.exe will not start with the classic theme).
-__It is important to add the files to the user folder with the %userprofile% environment variable, as this allows multi-user support for the basic theme, and soon for the classic theme.__
-
-__I found a way to add support for multiple user accounts with the classic theme. I will post this change soon.__
-
+__It is important to add the files to the user folder with the %userprofile% environment variable, as this allows multi-user support.__ That is, the ability to simultaneously run, for example, the DWM-styled theme (default theme) on User A, the Basic theme on User B, and the Classic theme on User C.
+For the moment, it is impossible to install ThemeSwitcherScripts on part of the user accounts. It must be installed on all visible accounts (invisible accounts do not count).
 
 FR:
 
@@ -57,20 +77,24 @@ Collection de scripts de commandes Windows pour changer de manière groupée l'a
 
 Pour pouvoir utiliser ces scripts, vous devez avoir installer dans chaque profile utilisateur :
 
-- ThemeSwitcher (https://winaero.com/winaero-theme-switcher/), dans le répertoire : _%userprofile%\TSS\ThemeSwitcher\ThemeSwitcher.exe_
-- ClassicThemeTray (https://github.com/spitfirex86/ClassicThemeTray), dans le répertoire : _%userprofile%\TSS\ClassicThemeTray.exe_
-- BasicThemer2 (https://github.com/Ingan121/BasicThemer2), dans le répertoire : _%userprofile%\TSS\Basic\BasicThemer2.exe_
+1. déplacez _basicthemer2.exe_ dans _%userprofile%\TSS\basic_
+2. déplacez _classicthemetray.exe_ dans _%userprofile%\TSS\classic_
+3. Répétez la copie de _basicthemer2.exe_ dans _%userprofile%\TSS\basic_ et de _classicthemetray.exe_ dans _%userprofile%\TSS\classic_ pour tout les autres comptes utilisateurs
+4. dans le planificateur de tâche, créez une tâche planifiée nommée basic, avec comme commandes dans l'ordre : _%userprofile%\TSS\basic\basicthemer2.exe_, _C:\Windows\System32\schtasks.exe /run /tn classic2_, comme déclencheur l'ouverture de session de tout les utilisateurs, et le groupe _BUILTIN\Users_ pour l'exécution de la tâche. Cochez la case _exécuter avec les autorisations maximales_
+5. Créez une tâche planifiée nommée classic, avec comme commandes dans l'ordre : _C:\Windows\System32\schtasks.exe /run /tn Apps_, _%userprofile%\TSS\classic\classicthemetray.exe /enable_, _C:\Windows\System32\schtasks.exe /run /tn classic2_, comme déclencheur, l'ouverture de session de tout les utilisateurs, et le groupe _BUILTIN\Users_ pour l'exécution de la tâche. Cochez la case _exécuter avec les autorisations maximales_
+6. Créez une tâche nommée _classic2_, avec comme commande _C:\Windows\System32\cmd.exe /c start userinit.exe_, avec le groupe _BUILTIN\Users_ pour l'exécution de la tâche, et sellectionnez dans les paramètres de la tâche la règle Si la tâche s'exécute déjà, la règle suivante s'applique : Ne pas démarrer une nouvelle instance
+7. Créez une tâche nommé _Apps_, avec comme commande _C:\Windows\System32\cmd.exe /c start C:\Windows\System32\ApplicationFrameHost.exe_,  avec le groupe _BUILTIN\Users_ pour l'exécution de la tâche
+8. Assurez vous que toute les tâches sont configurées pour s'exécuter sous n'importe quel mode d'alimentation.
+9. Importer ce fichier de registre ( /!\ ATTENTION, il est important de sauvegarder la clef précédente avant d'importer le fichier /!\ ) 
+10. Utilisez les scripts contenus dans la version 1.0 de ThemeSwitcherScript : https://github.com/OrthodoxWindows/ThemeSwitcherScripts/releases/tag/Release-1.0
 
-De plus, vous devez avoir réalisé les 6 premières étape de ce tutoriel : https://github.com/valinet/ExplorerPatcher/discussions/167.
+Cela fonctionne sur mon système, mais rien ne me fait dire que cela fonctionnera sur les autres systèmes. Il est donc important de le tester en prenant un maximum de précautions. N'hésitez pas à m'informer si cela fonctionne ou ne fonctionne pas. Quant je serais sûr que cela fonctionne, je pourais écrire un script d'installation automatique.
 
-Enfin, vous devez avoir créé une tâche planifié nommée _BasicTheme_, avec comme déclencheur l'ouverture de session d'un utilisateur, et comme action la commande _%userprofile%\TSS\Basic\BasicThemer2.exe_. La case _Ne démarrer la tâche que si l'ordinateur est relié au secteur_ doit être décochée, la case _Exécuter avec les autorisations maximales_ doit être cochée, et le bouton _N'exécuter que si l'utilisateur est connecté_ doit être sélectionner.
+Pour ajouter la prise en charge des fichiers .theme, vous devez copier winaero themeswitcher dans _%userprofile%\TSS\themeswitcher\_. Choisisez bien la version pour Windows 8 (et non pas pour Windows 7). https://winaero.com/winaero-theme-switcher/
 
 Support des styles visuels personnalisées :
 Theme Switcher Scripts supporte les styles visuels personnalisés avec un système patché avec des Outils comme UXThemePatcher ou UXStyle. Par contre, Theme SwitcherScript ne supporte pour le moment pas SecureUXTheme (https://github.com/namazso/SecureUxTheme/issues/108).
 
 Support Multi-utilisateur :
-~~Pour l'instant, Theme SwitcherScripts ne supporte pas la présence du thèmes classique sur plusieurs sessions utilisateurs.
-Le problème vient de l'inadaptation des tâches planifiés pour un système multi-utilisateur.~~ Pour le thème Basic, ce n'est pas très grave, car BasicThemer2 peut démarrer après explorer.exe (BasicThemer2 modifie les fenêtres à la volée), mais cela est plus compliqué pour le thème classique, car ClassicThemeTray doit démarrer avant explorer.exe (sinon, explorer.exe ne démarre pas avec le thème classique).
-__Il est important d'ajouter les fichier dans le dossier utilisateur avec la variable d'envirronement %userprofile%, car cela permet le support multi-utilisateur pour le thème basic, et prochainement pour le thème classique.__
-
-__J'ai trouvé un moyen d'ajouter la prise en charge de plusieurs comptes utilisateurs avec le thème classique. Je vais publier ce changement prochainement.__
+__Il est important d'ajouter les fichier dans le dossier utilisateur avec la variable d'envirronement %userprofile%, car cela permet le support multi-utilisateur.__ Cela ajoute la capacité d'exécuter simultanément, par exemple, le thème DWM-styled (defaut theme) sur l'utilisateur A, le thème Basic sur l'utilisateur B et le thème Classic sur l'utilisateur C.
+Pour le moment, il est impossible d'installer ThemeSwitcherScripts sur une partie des comptes utilisateurs. Il faut l'installer sur tout les comptes visible (et non pas les comptes invisibles).
