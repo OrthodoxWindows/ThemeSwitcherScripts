@@ -32,7 +32,8 @@ Thanks to @anixx for the original idea of the classic theme by scheduled tasks (
 6. Create a task named _classic2_, with the command _C:\Windows\System32\cmd.exe /c start userinit.exe_, with the group _BUILTIN\Users_ for the execution of the task, and select in the parameters of the task the rule If the task is already running, the following rule applies : _Do not start a new instance_
 7. Create a task named Apps, with command _C:\Windows\System32\cmd.exe /c start C:\Windows\System32\ApplicationFrameHost.exe_, with group _BUILTIN\Users_ for task execution
 8. Make sure all tasks are configured to run on any power mode.
-9. Import this registry file ( /!\ WARNING, it is important to save the previous key before modifying /!\ ) :
+9. Import this registry file ( __/!\ WARNING, it is important to save the previous key before modifying /!\__ ) :
+
 Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon]
 "Userinit"=""
@@ -80,7 +81,12 @@ Pour pouvoir utiliser ces scripts, vous devez avoir installer dans chaque profil
 6. Créez une tâche nommée _classic2_, avec comme commande _C:\Windows\System32\cmd.exe /c start userinit.exe_, avec le groupe _BUILTIN\Utilisateurs_ pour l'exécution de la tâche, et sellectionnez dans les paramètres de la tâche la règle Si la tâche s'exécute déjà, la règle suivante s'applique : _Ne pas démarrer une nouvelle instance_
 7. Créez une tâche nommé _Apps_, avec comme commande _C:\Windows\System32\cmd.exe /c start C:\Windows\System32\ApplicationFrameHost.exe_,  avec le groupe _BUILTIN\Utilisateurs_ pour l'exécution de la tâche
 8. Assurez vous que toute les tâches sont configurées pour s'exécuter sous n'importe quel mode d'alimentation.
-9. Importer ce fichier de registre ( /!\ ATTENTION, il est important de sauvegarder la clef précédente avant d'importer le fichier /!\ ) 
+9. Importer ce fichier de registre ( __/!\ ATTENTION, il est important de sauvegarder la clef précédente avant d'importer le fichier /!\__ ) 
+
+Windows Registry Editor Version 5.00
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon]
+"Userinit"=""
+
 10. Utilisez les scripts contenus dans la version 1.0 de ThemeSwitcherScript : https://github.com/OrthodoxWindows/ThemeSwitcherScripts/releases/tag/Release-1.0
 
 Cela fonctionne sur mon système, mais rien ne me fait dire que cela fonctionnera sur les autres systèmes. Il est donc important de le tester en prenant un maximum de précautions. N'hésitez pas à m'informer si cela fonctionne ou ne fonctionne pas. Quant je serais sûr que cela fonctionne, je pourais écrire un script d'installation automatique.
