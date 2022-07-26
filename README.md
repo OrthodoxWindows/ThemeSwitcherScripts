@@ -24,18 +24,13 @@ So here is the way to add multi-user support to ThemeSwitcherScript. That is, th
 
 Thanks to @anixx for the original idea of the classic theme by scheduled tasks ( winclassic.boards.net/thread/990/windows-classic-theme-on-1903 ).
 
-1. move basicthemer2.exe to %userprofile%\TSS\basic
-
-2. move classicthemetray.exe to %userprofile%\TSS\classic
-
-3. Repeat copying basicthemer2.exe to %userprofile%\TSS\basic and classicthemetray.exe to %userprofile%\TSS\classic for all other user accounts
-
-4. In the task scheduler, create a scheduled task named basic, with commands in order: %userprofile%\TSS\basic\basicthemer2.exe, C:\Windows\System32\schtasks.exe /run /tn classic2, as a trigger for all users to login, and the BUILTIN\Users group for task execution. Check the Run with maximum permissions box case
-
-5. Create a scheduled task named classic, with the following commands: C:\Windows\System32\schtasks.exe /run /tn Apps, %userprofile%\TSS\classic\classicthemetray.exe / enable, C:\Windows\System32\schtasks.exe /run /tn classic2 as the trigger for all user login, and the BUILTIN\Users group for task execution. Check the Run with maximum permissions box case
-
-6. Create a task named classic2, with the command C:\Windows\System32\cmd.exe /c start userinit.exe, with the group BUILTIN\Users for the execution of the task, and select in the parameters of the task the rule If the task is already running, the following rule applies : Do not start a new instance
-7. Create a task named Apps, with command C:\Windows\System32\cmd.exe /c start C:\Windows\System32\ApplicationFrameHost.exe, with group BUILTIN\Users for task execution
+1. move _basicthemer2.exe_ to _%userprofile%\TSS\basic_
+2. move _classicthemetray.exe_ to _%userprofile%\TSS\classic_
+3. Repeat copying _basicthemer2.exe_ to _%userprofile%\TSS\basic_ and _classicthemetray.exe_ to _%userprofile%\TSS\classic_ for all other user accounts
+4. In the task scheduler, create a scheduled task named basic, with commands in order: %userprofile%\TSS\basic\basicthemer2.exe, _C:\Windows\System32\schtasks.exe /run /tn classic2_, as a trigger for all users to login, and the _BUILTIN\Users_ group for task execution. Check the _Run with maximum permissions_ case
+5. Create a scheduled task named _classic_, with the following commands: _C:\Windows\System32\schtasks.exe /run /tn Apps_, _%userprofile%\TSS\classic\classicthemetray.exe /enable_, _C:\Windows\System32\schtasks.exe /run /tn classic2_ as the trigger for all user login, and the _BUILTIN\Users_ group for task execution. Check the _Run with maximum permissions_ case
+6. Create a task named _classic2_, with the command _C:\Windows\System32\cmd.exe /c start userinit.exe_, with the group _BUILTIN\Users_ for the execution of the task, and select in the parameters of the task the rule If the task is already running, the following rule applies : _Do not start a new instance_
+7. Create a task named Apps, with command _C:\Windows\System32\cmd.exe /c start C:\Windows\System32\ApplicationFrameHost.exe_, with group _BUILTIN\Users_ for task execution
 8. Make sure all tasks are configured to run on any power mode.
 9. Import this registry file ( /!\ WARNING, it is important to save the previous key before modifying /!\ ) :
 Windows Registry Editor Version 5.00
@@ -80,10 +75,10 @@ Pour pouvoir utiliser ces scripts, vous devez avoir installer dans chaque profil
 1. déplacez _basicthemer2.exe_ dans _%userprofile%\TSS\basic_
 2. déplacez _classicthemetray.exe_ dans _%userprofile%\TSS\classic_
 3. Répétez la copie de _basicthemer2.exe_ dans _%userprofile%\TSS\basic_ et de _classicthemetray.exe_ dans _%userprofile%\TSS\classic_ pour tout les autres comptes utilisateurs
-4. dans le planificateur de tâche, créez une tâche planifiée nommée basic, avec comme commandes dans l'ordre : _%userprofile%\TSS\basic\basicthemer2.exe_, _C:\Windows\System32\schtasks.exe /run /tn classic2_, comme déclencheur l'ouverture de session de tout les utilisateurs, et le groupe _BUILTIN\Users_ pour l'exécution de la tâche. Cochez la case _exécuter avec les autorisations maximales_
-5. Créez une tâche planifiée nommée classic, avec comme commandes dans l'ordre : _C:\Windows\System32\schtasks.exe /run /tn Apps_, _%userprofile%\TSS\classic\classicthemetray.exe /enable_, _C:\Windows\System32\schtasks.exe /run /tn classic2_, comme déclencheur, l'ouverture de session de tout les utilisateurs, et le groupe _BUILTIN\Users_ pour l'exécution de la tâche. Cochez la case _exécuter avec les autorisations maximales_
-6. Créez une tâche nommée _classic2_, avec comme commande _C:\Windows\System32\cmd.exe /c start userinit.exe_, avec le groupe _BUILTIN\Users_ pour l'exécution de la tâche, et sellectionnez dans les paramètres de la tâche la règle Si la tâche s'exécute déjà, la règle suivante s'applique : Ne pas démarrer une nouvelle instance
-7. Créez une tâche nommé _Apps_, avec comme commande _C:\Windows\System32\cmd.exe /c start C:\Windows\System32\ApplicationFrameHost.exe_,  avec le groupe _BUILTIN\Users_ pour l'exécution de la tâche
+4. dans le planificateur de tâche, créez une tâche planifiée nommée basic, avec comme commandes dans l'ordre : _%userprofile%\TSS\basic\basicthemer2.exe_, _C:\Windows\System32\schtasks.exe /run /tn classic2_, comme déclencheur l'ouverture de session de tout les utilisateurs, et le groupe _BUILTIN\Utilisateurs_ pour l'exécution de la tâche. Cochez la case _exécuter avec les autorisations maximales_
+5. Créez une tâche planifiée nommée classic, avec comme commandes dans l'ordre : _C:\Windows\System32\schtasks.exe /run /tn Apps_, _%userprofile%\TSS\classic\classicthemetray.exe /enable_, _C:\Windows\System32\schtasks.exe /run /tn classic2_, comme déclencheur, l'ouverture de session de tout les utilisateurs, et le groupe _BUILTIN\Utilisateurs_ pour l'exécution de la tâche. Cochez la case _exécuter avec les autorisations maximales_
+6. Créez une tâche nommée _classic2_, avec comme commande _C:\Windows\System32\cmd.exe /c start userinit.exe_, avec le groupe _BUILTIN\Utilisateurs_ pour l'exécution de la tâche, et sellectionnez dans les paramètres de la tâche la règle Si la tâche s'exécute déjà, la règle suivante s'applique : _Ne pas démarrer une nouvelle instance_
+7. Créez une tâche nommé _Apps_, avec comme commande _C:\Windows\System32\cmd.exe /c start C:\Windows\System32\ApplicationFrameHost.exe_,  avec le groupe _BUILTIN\Utilisateurs_ pour l'exécution de la tâche
 8. Assurez vous que toute les tâches sont configurées pour s'exécuter sous n'importe quel mode d'alimentation.
 9. Importer ce fichier de registre ( /!\ ATTENTION, il est important de sauvegarder la clef précédente avant d'importer le fichier /!\ ) 
 10. Utilisez les scripts contenus dans la version 1.0 de ThemeSwitcherScript : https://github.com/OrthodoxWindows/ThemeSwitcherScripts/releases/tag/Release-1.0
