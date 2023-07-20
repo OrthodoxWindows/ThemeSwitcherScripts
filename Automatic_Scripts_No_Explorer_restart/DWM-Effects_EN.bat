@@ -6,11 +6,14 @@ echo The classic theme has been disabled) else (echo The classic theme is alread
 
 start "" /D "%USERPROFILE%\TSS\classic" classicthemetray_old.exe /disable
 
-Set BT2=basicthemer2.exe
-tasklist | find /i "%BT2%">nul  && (TASKKILL /f /im basicthemer2.exe) || echo INA
-if exist "%userprofile%"\tss\basic\basicthemer2.exe (ren "%userprofile%\tss\basic\basicthemer2.exe" basicthemer2_old.exe
+Set BT5=uxsms.exe
+tasklist | find /i "%BT5%">nul  && (TASKKILL /f /im uxsms.exe) || goto :1
+:1
+if exist "%userprofile%"\tss\basic\uxsms.exe (ren "%userprofile%\tss\basic\uxsms.exe" uxsms_old.exe
 echo The basic theme has been disabled) else (echo The basic theme is already disabled)
+
+REG DELETE HKEY_LOCAL_MACHINE\SOFTWARE\Windhawk\Engine\Mods\local@disable-dwm-extended-frames /v Disabled /f
+REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Windhawk\Engine\Mods\local@disable-dwm-extended-frames /v Disabled /t REG_DWORD /d 1
 
 :MSG
 echo Task completed
-End
