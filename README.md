@@ -28,13 +28,13 @@ Thanks to @anixx for the original idea of the classic theme by scheduled tasks (
 2. move _classicthemetray.exe_ to _%userprofile%\TSS\classic_
 3. Repeat copying _uxsms.exe_ to _%userprofile%\TSS\basic_ and _classicthemetray.exe_ to _%userprofile%\TSS\classic_ for all other user accounts
 4. Import on the task scheduler the files : Apps.xml, Basic.xml, Classic.xml and Classic2.xml
-9. Import this registry file ( __/!\ WARNING, it is important to save the previous key before modifying /!\__ ) :
+5. Import this registry file ( __/!\ WARNING, it is important to save the previous key before modifying /!\__ ) :
 
 Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon]
 "Userinit"=""
 
-10. Use the scripts contained in ThemeSwitcherScript second release : github.com/OrthodoxWindows/ThemeSwitcherScripts/releases/tag/Release-1.1
+6. Use the scripts contained in ThemeSwitcherScript second release : github.com/OrthodoxWindows/ThemeSwitcherScripts/releases/tag/Release-1.1
 
 It works on my system, but nothing tells me that it will work on other systems. It is therefore important to test it by taking maximum precautions. Please let me know if it works or not. When I'm sure it works, I could write an automatic installation script.
 
