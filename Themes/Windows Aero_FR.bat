@@ -32,7 +32,7 @@ Start %userprofile%\TSS\WTS\ThemeSwitcher.exe "C:\Windows\Resources\Themes\aero.
 
 %userprofile%\TSS\CTC\Themes_W10.exe @appearance /Apply "Win10 - Aero" "Normal"
 
-call "%userprofile%\TSS\ThemeSwitcherScripts-main\Explorer_Restart\Explorer_Restart_FR.bat"
+call "%userprofile%\TSS\Explorer_Restart\Explorer_Restart_FR.bat"
 
 goto :END
 
