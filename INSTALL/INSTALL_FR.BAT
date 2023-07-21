@@ -26,7 +26,7 @@ echo *     Réparation de ThemeSwitcherScripts      *
 echo *                                             *
 echo * Appuyez sur P pour réparer les programmes,  *
 echo *    T pour réparer les tâches planifiés,     *
-echo *    R pour réparer la sous-clef userinit,    *
+echo *       R pour réparer la clef userinit,      *
 echo *     A pour revenir à l’étape précédente     *
 echo ***********************************************
 echo.
@@ -75,7 +75,7 @@ if /I "%c%" EQU "N" (goto :ABORT)
 
 :PROGRAMS_INSTALL
 if exist "C:\Windows\system32\curl.exe" (echo Curl est installé sur votre système. L’installation peut se poursuivre.
-goto :BASICTHEMER2) else (echo Curl n’est pas pas installé sur votre système. Veuillez installer Curl)
+goto :BASICTHEMER5) else (echo Curl n’est pas pas installé sur votre système. Veuillez installer Curl)
 echo.
 echo https://curl.se/windows/
 echo https://devstory.net/11617/installer-curl-sur-windows
@@ -84,39 +84,34 @@ pause
 goto :PROGRAMS
 ::ajouter l'installation automatique de Curl
 
-:BASICTHEMER2
+:BASICTHEMER5
 pause
-title Installation de BasicThemer2...
+title Installation de BasicThemer5...
 if not exist "C:\TSS" (mkdir "C:\TSS")
 if not exist "%userprofile%\TSS" (mkdir "%userprofile%\TSS")
 
 echo(
-echo     Le téléchargement de "BasicThemer2-v0.5.2-Release-3.zip" est en progression ...
+echo     Le téléchargement de "uxsms.exe" est en progression ...
 echo.
 
-curl "https://github.com/Ingan121/BasicThemer2/releases/download/v0.5.2-3/BasicThemer2-v0.5.2-Release-3.zip" -L --output "C:\TSS\BasicThemer2-v0.5.2-Release-3.zip"
+curl "https://github.com/arukateru/BasicThemer5/releases/download/1/uxsms.exe" -L --output "C:\TSS\uxsms.exe"
 
 if not exist "%userprofile%\TSS\Basic" (mkdir "%userprofile%\TSS\Basic")
 
-if exist C:\TSS\BasicThemer2-v0.5.2-Release-3.zip (powershell.exe Expand-Archive -Path C:\TSS\BasicThemer2-v0.5.2-Release-3.zip -DestinationPath "C:\TSS\Basic"
-move "C:\TSS\Basic\BasicThemer2.exe" "%userprofile%\TSS\Basic"
-move "C:\TSS\Basic\BasicThemer2.exe.config" "%userprofile%\TSS\Basic"
-move "C:\TSS\Basic\BasicThemer2.log" "%userprofile%\TSS\Basic"
-move "C:\TSS\Basic\BasicThemer2.pdb" "%userprofile%\TSS\Basic"
-move "C:\TSS\Basic\ResetConfig.reg" "%userprofile%\TSS\Basic") else (echo BasicThemer2 n’est pas dans le dossier du script d’installation en cours d’exécution. Veuillez réassayer.
-goto :RBT2)
+if exist C:\TSS\uxsms.exe (move "C:\TSS\Basic\uxsms.exe" "%userprofile%\TSS\Basic") else (echo BasicThemer5 n’est pas dans le dossier du script d’installation en cours d’exécution. Veuillez réassayer.
+goto :RBT5)
 echo.
 echo Suppresion du dossier temporaire...
 echo.
 rmdir /s /q C:\TSS\Basic
-if exist "%userprofile%\TSS\Basic\BasicThemer2.exe" (echo BasicThemer a été correctement installé
-goto :SBT2) else (echo BasicThemer2 n’a pas été installé correctement. Veuillez réessayer.
-goto :RBT2)
-:RBT2
+if exist "%userprofile%\TSS\Basic\uxsms.exe" (echo BasicThemer5 a été correctement installé
+goto :SBT5) else (echo BasicThemer5 n’a pas été installé correctement. Veuillez réessayer.
+goto :RBT5)
+:RBT5
 set /P c=Voulez vous réessayer ?[Y\N]?
-if /I "%c%" EQU "Y" (goto :BASICTHEMER2)
+if /I "%c%" EQU "Y" (goto :BASICTHEMER5)
 if /I "%c%" EQU "N" (goto :MENU)
-:SBT2
+:SBT5
 title En attente de confirmation...
 pause
 
@@ -146,6 +141,32 @@ if /I "%c%" EQU "N" (goto :MENU)
 pause
 title En attente de confirmation...
 
+:WCTC
+title Installation de WinClassicThemeConfig...
+if not exist "C:\TSS" (mkdir "C:\TSS")
+if not exist "%userprofile%\TSS" (mkdir "%userprofile%\TSS")
+echo(
+echo     Le téléchargement de "Themes_W10.exe" est en progression ...
+echo.
+
+curl "https://ncloud5.zaclys.com/index.php/s/J7mCiwboseac2g9/download/Themes_W10.exe" -L --output "C:\TSS\Themes_W10.exe"
+
+if not exist "%userprofile%\TSS\CTC" (mkdir "%userprofile%\TSS\CTC")
+
+if exist C:\TSS\Themes_W10.exe (move "C:\TSS\Themes_W10.exe" "%userprofile%\TSS\CTC") else (echo WinClassicThemeConfig n’est pas dans le dossier du script d’installation en cours d’exécution. Veuillez réassayer.
+goto :RWCTC)
+
+if exist "%userprofile%\TSS\CTC\Themes_W10.exe" (echo WinClassicThemeConfig a été correctement installé
+goto :SWCTC) else (echo WinClassicThemeConfig n’a pas été installé correctement. Veuillez réessayer.
+goto :RWCTC)
+:RWCTC
+set /P c=Voulez vous réessayer ?[Y\N]?
+if /I "%c%" EQU "Y" (goto :WCTC)
+if /I "%c%" EQU "N" (goto :MENU)
+:SWCTC
+pause
+title En attente de confirmation...
+
 :WINAEROTHEMESWITCHER
 title Installation de WinaeroThemeSwitcher...
 if not exist "C:\TSS" (mkdir "C:\TSS")
@@ -157,18 +178,18 @@ echo.
 
 curl "https://web.archive.org/web/20170331093348/http://winaero.com/e107_files/downloads/WinaeroThemeSwitcher.zip" --output "C:\TSS\WinaeroThemeSwitcher.zip"
 
-if not exist "%userprofile%\TSS\WinaeroThemeSwitcher" (mkdir "%userprofile%\TSS\WinaeroThemeSwitcher")
+if not exist "%userprofile%\TSS\WTS" (mkdir "%userprofile%\TSS\WTS")
 
-if exist C:\TSS\WinaeroThemeSwitcher.zip (powershell.exe Expand-Archive -Path C:\TSS\WinaeroThemeSwitcher.zip -DestinationPath "C:\TSS\WinaeroThemeSwitcher"
-move "C:\TSS\WinaeroThemeSwitcher\Winaero EULA.txt" "%userprofile%\TSS\WinaeroThemeSwitcher"
-move "C:\TSS\WinaeroThemeSwitcher\Windows 8\ThemeSwitcher.exe" "%userprofile%\TSS\WinaeroThemeSwitcher") else (echo WinearoThemeSwitcher n’est pas dans le dossier du script d’installation en cours d’exécution. Veuillez réassayer.
+if exist C:\TSS\WinaeroThemeSwitcher.zip (powershell.exe Expand-Archive -Path C:\TSS\WinaeroThemeSwitcher.zip -DestinationPath "C:\TSS\WTS"
+move "C:\TSS\WTS\Winaero EULA.txt" "%userprofile%\TSS\WTS"
+move "C:\TSS\WTS\Windows 8\ThemeSwitcher.exe" "%userprofile%\TSS\WTS") else (echo WinearoThemeSwitcher n’est pas dans le dossier du script d’installation en cours d’exécution. Veuillez réassayer.
 goto :RWTS)
 echo.
 echo Suppresion du dossier temporaire...
 echo.
-rmdir /s /q C:\TSS\WinaeroThemeSwitcher
+rmdir /s /q C:\TSS\WTS
 
-if exist "%userprofile%\TSS\WinaeroThemeSwitcher\ThemeSwitcher.exe" (echo WinaeroThemeSwitcher a été correctement installé
+if exist "%userprofile%\TSS\WTS\ThemeSwitcher.exe" (echo WinaeroThemeSwitcher a été correctement installé
 goto :SWTS) else (echo WinaeroThemeSwitcher n’a pas été installé correctement. Veuillez réessayer.
 goto :RWTS)
 :RWTS
@@ -178,7 +199,6 @@ if /I "%c%" EQU "N" (goto :MENU)
 :SWTS
 title En attente de confirmation...
 pause
-
 
 :CLASSICTASKMGR
 title Installation de ClassicTaskManager...
@@ -211,6 +231,43 @@ echo.
 echo     Le script d’installation va maintenant installer les tâches planifiées.
 echo.
 set /P c=Voulez-vous Continuer ?[Y\N]?
+if /I "%c%" EQU "Y" (goto :Windhawks)
+if /I "%c%" EQU "N" (goto :ABORT)
+
+:Windhawks
+title Installation de Windhawks...
+if not exist "C:\TSS" (mkdir "C:\TSS")
+if not exist "%userprofile%\TSS" (mkdir "%userprofile%\TSS")
+echo(
+echo     Le téléchargement de "windhawk_setup.exe" est en progression ...
+echo.
+
+curl "https://ramensoftware.com/downloads/windhawk_setup.exe" -L --output "C:\TSS\windhawk_setup.exe"
+if exist C:\TSS\windhawk_setup.exe (start C:\TSS\windhawk_setup.exe) else (echo Windhawks n’est pas dans le dossier du script d’installation en cours d’exécution. Veuiller réassayer.
+goto :RWindhawks)
+echo.
+echo     Veuillez installer Windhawks
+echo.
+echo -------------------------------------------------------------------------------------------------
+echo Si l’installation de Windhawks s’est correctement déroulée, vous pouvez continuer l’installation.
+echo -------------------------------------------------------------------------------------------------
+echo.
+
+if not exist "%userprofile%\TSS\CTC" (mkdir "%userprofile%\TSS\CTC")
+
+if exist C:\TSS\windhawk_setup.exe (move "C:\TSS\windhawk_setup.exe" "%userprofile%\TSS\CTC") else (echo Windhawks n’est pas dans le dossier du script d’installation en cours d’exécution. Veuillez réassayer.
+goto :RWindhawks)
+
+if exist "C:\Program Files\Windhawk\windhawk.exe" (echo Windhawk a été correctement installé
+goto :SWindhawks) else (echo Windhawk n’a pas été installé correctement. Veuillez réessayer.
+goto :RWindhawks)
+
+:RWindhawks
+set /P c=Voulez vous réessayer ?[Y\N]?
+if /I "%c%" EQU "Y" (goto :Windhawks)
+if /I "%c%" EQU "N" (goto :MENU)
+
+set /P c=Voulez-vous Continuer ?[Y\N]?
 if /I "%c%" EQU "Y" (goto :SCHDTASKS)
 if /I "%c%" EQU "N" (goto :ABORT)
 
@@ -241,8 +298,7 @@ echo Valeur userinit sauvegardée dans le fichier userinit.txt. Ne déplacez et 
 echo Pour restaurer la valeur en cas de problème, rendez-vous au menu principal de ce scripts d’installation
 echo                                                                               -- désinstaller (D)
 echo                                                                                  -- restaurer la sous-clef userinit (R)
-echo                                                             ou dans le script USERINIT_VALUE_RESTORE.bat
-pause
+echo                                                             ou dans le script USERINIT_VALUE_RESTORE.exe
 goto :USERINIT_REG_KEY
 
 ::*********************************************************************************
@@ -257,6 +313,7 @@ title restauration de la sous-clef userinit...
 FOR /F %%i in ('type userinit.txt') do REG ADD "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" /v Userinit /t REG_SZ /d ""%%i""
 echo Restauration effectuée
 pause
+goto :MENU
 ::*********************************************************************************
 
 ::*********************************************************************************
@@ -283,7 +340,7 @@ echo.
 echo     Sauvegarde de la clef Defaultcolors\Standard...
 echo.
 REG SAVE "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\DefaultColors\Standard" DefaultColors-Standard.hiv
-echo Clef userinit sauvegardée dans le fichier DefaultColors-Standard.hiv. Ne déplacez et ne rennomez pas ce fichier. Ce fichier doit être situé dans le même répertoire que le script d’installation.
+echo Clef DefaultColors\Standard sauvegardée dans le fichier DefaultColors-Standard.hiv. Ne déplacez et ne rennomez pas ce fichier. Ce fichier doit être situé dans le même répertoire que le script d’installation.
 echo Pour restaurer la clef en cas de problème, rendez-vous au menu principal de ce scripts d’installation
 echo                                                                               -- désinstaller (D)
 echo                                                                                  -- restaurer la clef DefaultColor (R)
@@ -292,125 +349,125 @@ pause
 :STANDARD_REG_KEY
 title Suppresion de la clé Defaultcolors\Standard...
 REG DELETE "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\DefaultColors\Standard"
+echo Clef Defaultcolors\Standard supprimer
+pause
 :TSS_PROGRAMS_MOVE
 title Déplacement des scripts...
+set /P c=Votre système contient-il plusieurs sessions utilisateur ? Si oui, tapez Y. Sinon, tapez N[Y\N]?
+if /I "%c%" EQU "Y" (goto :MOVE_AN)
+if /I "%c%" EQU "N" (goto :DIRM)
+:MOVE_AN
+xcopy "%cd%" "C:\TSS" /E /I
+:DIRM
 echo.
 echo     Déplacement des scripts...
 echo.
-move "%cd%\SCRIPTS\Classic_FR.exe" "%userprofile%\TSS\SwitcherScripts"
-move "%cd%\SCRIPTS\Basic_FR.exe" "%userprofile%\TSS\SwitcherScripts"
-move "%cd%\SCRIPTS\DWM_Styled_FR.exe" "%userprofile%\TSS\SwitcherScripts"
-move "%cd%\SCRIPTS\Auto_Classic_FR.exe" "%userprofile%\TSS\AutoSwitcherScripts"
-move "%cd%\SCRIPTS\Auto_Basic_FR.exe" "%userprofile%\TSS\AutoSwitcherScripts"
-move "%cd%\SCRIPTS\Auto_DWM_Styled_FR.exe" "%userprofile%\TSS\AutoSwitcherScripts"
+ren "%userprofile%\TSS\classic\classicthemetray.exe" classicthemetray_old.exe
+ren "%userprofile%\tss\basic\uxsms.exe" uxsms_old.exe
+move "%cd%\Explorer_Restart" "%userprofile%\TSS\Explorer_Restart"
+move "%cd%\INSTALL" "%userprofile%\INSTALL"
+move "%cd%\Installation_Test_Scripts" "%userprofile%\TSS\Installation_Test_Scripts"
+move "%cd%\Switcher_Scripts" "%userprofile%\TSS\Switcher_Scripts"
+move "%cd%\Themes" "%userprofile%\TSS\Themes"
+move "%cd%\Themes_Auto" "%userprofile%\TSS\Themes_Auto"
 move "basic.xml" "%userprofile%\TSS\INSTALL\basic.xml"
 move "classic.xml" "%userprofile%\TSS\INSTALL\classic.xml"
 move "classic2.xml" "%userprofile%\TSS\INSTALL\classic2.xml"
 move "apps.xml" "%userprofile%\TSS\INSTALL\apps.xml"
 move "userinit.txt" "%userprofile%\TSS\INSTALL\userinit.txt"
+move "disable-dwm-extended-frames.c" "%userprofile%\TSS\INSTALL\disable-dwm-extended-frames.c"
 move "DefaultColors-Standard.hiv" "%userprofile%\TSS\INSTALL\DefaultColors-Standard.hiv"
-move "INSTALL_ANOTHER_USERS.exe" "%userprofile%\TSS\INSTALL\INSTALL_ANOTHER_USERS.exe"
 move "USERINIT_VALUE_RESTORE.exe" "%userprofile%\TSS\INSTALL\USERINIT_VALUE_RESTORE.exe"
-move "OPTIONAL_TOOLS.exe" "%userprofile%\TSS\INSTALL\OPTIONAL_TOOLS.exe"
+::move "OPTIONAL_TOOLS.exe" "%userprofile%\TSS\INSTALL\OPTIONAL_TOOLS.exe"
+
+::title Création des liens symboliques...
+::echo.
+::echo     Création des liens symboliques...
+::echo.
+::mklink "%userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Outils ThemeSwitcherScripts\Activer le thème Basic" "%userprofile%\TSS\SwitcherScripts\Classic_FR.exe"
+::mklink "%userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Outils ThemeSwitcherScripts\Activer le thème Classique" "%userprofile%\TSS\SwitcherScripts\Basic_FR.exe"
+::mklink "%userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Outils ThemeSwitcherScripts\Activer le thème style-DWM" "%userprofile%\TSS\SwitcherScripts\DWM_Styled_FR.exe"
+::mklink "%userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Outils ThemeSwitcherScripts\Activer le thème style-DWM" "%userprofile%\TSS\SwitcherScripts\Auto_Classic_FR.exe"
+::mklink "%userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Outils ThemeSwitcherScripts\Activer le thème style-DWM" "%userprofile%\TSS\SwitcherScripts\Auto_Basic_FR.exe"
+::mklink "%userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Outils ThemeSwitcherScripts\Activer le thème style-DWM" "%userprofile%\TSS\SwitcherScripts\Auto_DWM_Styled_FR.exe"
 
 ::finir
 
-title Création des liens symboliques...
+title L'installation des scripts s'est correctement déroulée
 echo.
-echo     Création des liens symboliques...
-echo.
-mklink "%userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Outils ThemeSwitcherScripts\Activer le thème Basic" "%userprofile%\TSS\SwitcherScripts\Classic_FR.exe"
-mklink "%userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Outils ThemeSwitcherScripts\Activer le thème Classique" "%userprofile%\TSS\SwitcherScripts\Basic_FR.exe"
-mklink "%userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Outils ThemeSwitcherScripts\Activer le thème style-DWM" "%userprofile%\TSS\SwitcherScripts\DWM_Styled_FR.exe"
-mklink "%userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Outils ThemeSwitcherScripts\Activer le thème style-DWM" "%userprofile%\TSS\SwitcherScripts\Auto_Classic_FR.exe"
-mklink "%userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Outils ThemeSwitcherScripts\Activer le thème style-DWM" "%userprofile%\TSS\SwitcherScripts\Auto_Basic_FR.exe"
-mklink "%userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Outils ThemeSwitcherScripts\Activer le thème style-DWM" "%userprofile%\TSS\SwitcherScripts\Auto_DWM_Styled_FR.exe"
-
-ren "%userprofile%\TSS\classic\classicthemetray.exe" classicthemetray_old.exe
-ren "%userprofile%\tss\basic\basicthemer2.exe" basicthemer2_old.exe
-
-::finir
-
-title L'installation des scripts c'est correctement déroulée
-echo.
-echo     L’installation des scripts c’est correctement déroulée
+echo     L’installation des scripts s’est correctement déroulée
 echo.
 pause
 echo.
-echo Pour installer ThemeSwitcher scripts pour un ou pour tout les autres profiles utilisateurs, rendez-vous dans chaques sessions concernés, et exécutez le script INSTALL_ANOTHER_USERS.exe.
+echo Pour installer ThemeSwitcherScripts pour un ou pour tout les autres profiles utilisateurs, rendez-vous dans chaques sessions concernés, et exécutez le script C:\TSS\INSTALL_ANOTHER_USERS.exe.
 echo Cela est recommandé.
 echo.
-echo Pour installer les outils additionels, exécutez le script OPTIONAL_TOOLS.exe. Cette installation est fortement recommandée.
-echo Si vous ne les installez pas, vous ne pourrez pas bénéficier de toute les fonctionnalités des thèmes créer avec ThemeSwitcherScript.
+::echo Pour installer les outils additionels, exécutez le script OPTIONAL_TOOLS.exe. Cette installation est fortement recommandée.
+::echo Si vous ne les installez pas, vous ne pourrez pas bénéficier de toute les fonctionnalités des thèmes créés avec ThemeSwitcherScripts.
 echo.
 goto :END
 
-::************************************************************************************************
+::********************************************************************************************************************************************************************************************************
 :PROGRAMS_INSTALL_R
 title Menu de réparation de ThemeSwitcherScripts
 color 47
 echo **************************************************************
 echo *                  Réparation des programmes                 *
 echo *                                                            *
-echo *          Appuyer sur B pour réparer BasicThemer2,          *
+echo *          Appuyer sur B pour réparer BasicThemer5,          *
 echo *             C pour réparer ClassicThemeTray,               *
 echo *           W pour réparer WinaeroThemeSwitcher,             *
 echo *    T pour réparer Le gestionnaire des tâches classique,    *
 echo *          S pour réparer les tâches planifiées,             *
 echo *   R pour réparer la modification de la valeur userinit,    *
-echo *          P pour réparer les scripts de basulement          *
-echo *            L pour réparer les liens symboliques            *          
+::echo *          P pour réparer les scripts de basulement          *
+::echo *            L pour réparer les liens symboliques            *          
 echo *             A pour revenir à l’étape précédente            *
 echo **************************************************************
 echo.
 
-CHOICE /C BCWTSRPLA
-if "%errorlevel%"=="1" goto :BASICTHEMER2_R
+CHOICE /C BCWTSRA
+if "%errorlevel%"=="1" goto :BASICTHEMER5_R
 if "%errorlevel%"=="2" goto :CLASSICTHEMETRAY_R
 if "%errorlevel%"=="3" goto :WINAEROTHEMESWITCHER_R
 if "%errorlevel%"=="4" goto :CLASSICTASKMGR_R
 if "%errorlevel%"=="5" goto :SCHDTASKS_R
 if "%errorlevel%"=="6" goto :USERINIT_REG_KEY_R
-if "%errorlevel%"=="7" goto :SCRIPTS_R
-if "%errorlevel%"=="8" goto :MKLINK_R
+::if "%errorlevel%"=="7" goto :SCRIPTS_R
+::if "%errorlevel%"=="8" goto :MKLINK_R
 if "%errorlevel%"=="9" goto :MENU
 
-:BASICTHEMER2_R
+:BASICTHEMER5_R
 title En attente de confirmation...
 if not exist "C:\TSS" (mkdir "C:\TSS")
 echo(
-echo     Le téléchargement de "BasicThemer2-v0.5.2-Release-3.zip" est en progression ...
+echo     Le téléchargement de "uxsms.exe" est en progression ...
 echo.
-title Installation de BasicThemer2...
-curl "https://github.com/Ingan121/BasicThemer2/releases/download/v0.5.2-3/BasicThemer2-v0.5.2-Release-3.zip" -L --output "C:\TSS\BasicThemer2-v0.5.2-Release-3.zip"
+title Installation de BasicThemer5...
+curl "https://github.com/arukateru/BasicThemer5/releases/download/1/uxsms.exe" -L --output "C:\TSS\uxsms.exe"
 
 if not exist "%userprofile%\TSS\Basic" (mkdir "%userprofile%\TSS\Basic")
 
-if exist C:\TSS\BasicThemer2-v0.5.2-Release-3.zip (powershell.exe Expand-Archive -Path C:\TSS\BasicThemer2-v0.5.2-Release-3.zip -DestinationPath "C:\TSS\Basic"
-move "C:\TSS\Basic\BasicThemer2.exe" "%userprofile%\TSS\Basic"
-move "C:\TSS\Basic\BasicThemer2.exe.config" "%userprofile%\TSS\Basic"
-move "C:\TSS\Basic\BasicThemer2.log" "%userprofile%\TSS\Basic"
-move "C:\TSS\Basic\BasicThemer2.pdb" "%userprofile%\TSS\Basic"
-move "C:\TSS\Basic\ResetConfig.reg" "%userprofile%\TSS\Basic") else (echo BasicThemer2 n'est pas dans le dossier du script d'installation en cours d'exécution. Veuiller réassayer.
-goto :RBT2_R)
+if exist C:\TSS\uxsms.exe (move "C:\TSS\Basic\uxsms.exe" "%userprofile%\TSS\Basic") else (echo BasicThemer2 n’est pas dans le dossier du script d’installation en cours d’exécution. Veuillez réassayer.
+goto :RBT5_R)
 echo.
 echo Suppresion du dossier temporaire...
 echo.
 rmdir /s /q C:\TSS\Basic
 
-if exist "%userprofile%\TSS\Basic\BasicThemer2.exe" (echo BasicThemer2 à été correctement réparé
-goto :SBT2_R) else (goto :QBT2)
+if exist "%userprofile%\TSS\Basic\uxsms.exe" (echo BasicThemer5 à été correctement réparé
+goto :SBT5_R) else (goto :QBT5_R)
 
-:QBT2_R
-if exist "%userprofile%\TSS\Basic\BasicThemer2_old.exe" (echo BasicThemer2 à été correctement réparé
-goto :SBT2_R) else (echo BasicThemer2 n’a pas été réparé correctement. Veuillez réessayer.
-goto :RBT2_R)
+:QBT5_R
+if exist "%userprofile%\TSS\Basic\uxsms_old.exe" (echo BasicThemer5 à été correctement réparé
+goto :SBT5_R) else (echo BasicThemer5 n’a pas été réparé correctement. Veuillez réessayer.
+goto :RBT5_R)
 
-:RBT2_R
+:RBT5_R
 set /P c=Voulez vous réessayer ?[Y\N]?
-if /I "%c%" EQU "Y" (goto :BASICTHEMER2_R)
+if /I "%c%" EQU "Y" (goto :BASICTHEMER5_R)
 if /I "%c%" EQU "N" (goto :PROGRAMS_INSTALL_R)
-:SBT2_R 
+:SBT5_R 
 pause
 goto :PROGRAMS_INSTALL_R
 
@@ -454,17 +511,17 @@ echo.
 title Installation de WinaeroThemeSwitcher...
 curl "https://web.archive.org/web/20170331093348/http://winaero.com/e107_files/downloads/WinaeroThemeSwitcher.zip" --output "C:\TSS\WinaeroThemeSwitcher.zip"
 
-if not exist "%userprofile%\TSS\WinaeroThemeSwitcher" (mkdir "%userprofile%\TSS\WinaeroThemeSwitcher")
+if not exist "%userprofile%\TSS\WTS" (mkdir "%userprofile%\TSS\WTS")
 
-if exist C:\TSS\WinaeroThemeSwitcher.zip (powershell.exe Expand-Archive -Path C:\TSS\WinaeroThemeSwitcher.zip -DestinationPath "C:\TSS\WinaeroThemeSwitcher"
-move "C:\TSS\WinaeroThemeSwitcher\Winaero EULA.txt" "%userprofile%\TSS\WinaeroThemeSwitcher"
-move "C:\TSS\WinaeroThemeSwitcher\Windows 8\ThemeSwitcher.exe" "%userprofile%\TSS\WinaeroThemeSwitcher") else (echo WinearoThemeSwitcher n’est pas dans le dossier du script d’installation en cours d’exécution. Veuiller réassayer.
+if exist C:\TSS\WinaeroThemeSwitcher.zip (powershell.exe Expand-Archive -Path C:\TSS\WinaeroThemeSwitcher.zip -DestinationPath "C:\TSS\WTS"
+move "C:\TSS\WTS\Winaero EULA.txt" "%userprofile%\TSS\WTS"
+move "C:\TSS\WTS\Windows 8\ThemeSwitcher.exe" "%userprofile%\TSS\WTS") else (echo WinearoThemeSwitcher n’est pas dans le dossier du script d’installation en cours d’exécution. Veuiller réassayer.
 goto :RWTS_R)
 echo.
 echo Suppresion du dossier temporaire...
 echo.
-rmdir /s /q C:\TSS\WinaeroThemeSwitcher
-if exist "%userprofile%\TSS\WinaeroThemeSwitcher\ThemeSwitcher.exe" (echo WinaeroThemeSwitcher a été correctement réparé
+rmdir /s /q C:\TSS\WTS
+if exist "%userprofile%\TSS\WTS\ThemeSwitcher.exe" (echo WinaeroThemeSwitcher a été correctement réparé
 goto :SWTS_R) else (echo WinaeroThemeSwitcher n’a pas été réparé correctement. Veuillez réessayer.
 goto :RWTS_R)
 :RWTS_R
@@ -529,22 +586,22 @@ REG ADD "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" /v Userinit
 echo Sous-clef userinit modifiée.
 pause
 goto :REPAIR
-::*********************************************************************************
 ::Créer :SCRIPTS_R et :MKLINK_R
 
+::*****************************************************************************************************************************************************************************************************
 :UNINSTALL_PROGRAMS
 title En attente de confirmation...
 set /P c=Voulez-vous désinstaller ThemeSwitcherScripts ?[Y\N]?
-if /I "%c%" EQU "Y" (goto :RESTORE_USER_INIT_A)
+if /I "%c%" EQU "Y" (goto :UNINSTALL_USER_INIT)
 if /I "%c%" EQU "N" (goto :UNINSTALL)
 
-:RESTORE_USER_INIT_A
+:UNINSTALL_USER_INIT
 title en atente de confirmation...
 color 4F
 set /P c=Voulez-vous restaurer la sous-clef userinit originale ?[Y\N]?
-if /I "%c%" EQU "Y" (goto :RESTORE_USER_INIT_2)
+if /I "%c%" EQU "Y" (goto :UNINSTALL_USER_INIT_2)
 if /I "%c%" EQU "N" (goto :UNINSTALL_PROGRAMS)
-:RESTORE_USER_INIT_2
+:UNINSTALL_USER_INIT_2
 title restauration de la sous-clef userinit...
 FOR /F %%i in ('type userinit.txt') do REG ADD "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" /v Userinit /t REG_SZ /d ""%%i""
 echo      Restauration effectuée
@@ -555,9 +612,19 @@ schtasks /delete /tn "classic"
 schtasks /delete /tn "classic2"
 schtasks /delete /tn "apps"
 title Suppression des programmes...
-rmdir /s /q "%userprofile%\TSS"
+rmdir /s /q "%userprofile%\TSS\Explorer_Restart"
+rmdir /s /q "%userprofile%\TSS\Installation_Test_Scripts"
+rmdir /s /q "%userprofile%\TSS\Switcher_Scripts"
+rmdir /s /q "%userprofile%\TSS\Themes"
+rmdir /s /q "%userprofile%\TSS\Themes_Auto"
+del "%userprofile%\TSS\INSTALL\Apps.xml"
+del "%userprofile%\TSS\INSTALL\Basic.xml"
+del "%userprofile%\TSS\INSTALL\Classic.xml"
+del "%userprofile%\TSS\INSTALL\Classic2.xml"
+
 title Restauration de la clé DefaultColors\Standard...
 REG RESTORE "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\DefaultColors\Standard" DefaultColors-Standard.hiv
+del "%userprofile%\TSS\INSTALL\DefaultColors-Standard.hiv"
 title Désinstallation terminée
 echo.
 echo      Désinstallation terminée.
@@ -566,22 +633,21 @@ echo.     Pour désinstaller les fichiers et les programmes tiers des autres com
 echo.     Cela est recommandé, car les fichiers et programmes des autres comptes utilisateur sont à présent inutile.
 echo.
 pause
-goto :END
+goto :END_2
 
+::***********************************************************************************************************************************************************************************************************
 :ABORT
 title Installation annulée
 color 0A
 echo Installation annulée
 pause
 goto :END_2
-end
 
 :END
-color 2E
 title Installation terminée
+color 2E
 pause
 start Move_Install_Script.exe
 goto :END_2
 
 :END_2
-end
