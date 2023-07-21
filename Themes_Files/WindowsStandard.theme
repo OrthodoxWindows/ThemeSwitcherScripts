@@ -54,22 +54,7 @@ WindowText=0 0 0
 HotTracking=58 110 165
 
 [Control Panel\Cursors]
-Arrow=
-Help=
-AppStarting=
-Wait=
-NWPen=
-No=
-SizeNS=
-SizeWE=
-Crosshair=
-IBeam=
-SizeNWSE=
-SizeNESW=
-SizeAll=
-UpArrow=
-DefaultValue=
-Link=
+DefaultValue=Windows default
 
 [Control Panel\Desktop]
 Wallpaper=
