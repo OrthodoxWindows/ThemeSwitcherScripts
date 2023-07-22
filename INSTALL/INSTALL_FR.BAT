@@ -87,6 +87,8 @@ goto :PROGRAMS
 :BASICTHEMER5
 pause
 title Installation de BasicThemer5...
+if exist "%userprofile%\TSS\Basic\uxsms.exe" (goto :CLASSICTHEMETRAY)
+if exist "%userprofile%\TSS\Basic\uxsms_old.exe" (goto :CLASSICTHEMETRAY)
 if not exist "C:\TSS" (mkdir "C:\TSS")
 if not exist "%userprofile%\TSS" (mkdir "%userprofile%\TSS")
 
@@ -98,12 +100,9 @@ curl "https://github.com/arukateru/BasicThemer5/releases/download/1/uxsms.exe" -
 
 if not exist "%userprofile%\TSS\Basic" (mkdir "%userprofile%\TSS\Basic")
 
-if exist C:\TSS\uxsms.exe (move "C:\TSS\Basic\uxsms.exe" "%userprofile%\TSS\Basic") else (echo BasicThemer5 n’est pas dans le dossier du script d’installation en cours d’exécution. Veuillez réassayer.
+if exist C:\TSS\uxsms.exe (move "C:\TSS\uxsms.exe" "%userprofile%\TSS\Basic") else (echo BasicThemer5 n’est pas dans le dossier du script d’installation en cours d’exécution. Veuillez réassayer.
 goto :RBT5)
-echo.
-echo Suppresion du dossier temporaire...
-echo.
-rmdir /s /q C:\TSS\Basic
+
 if exist "%userprofile%\TSS\Basic\uxsms.exe" (echo BasicThemer5 a été correctement installé
 goto :SBT5) else (echo BasicThemer5 n’a pas été installé correctement. Veuillez réessayer.
 goto :RBT5)
@@ -117,6 +116,8 @@ pause
 
 :CLASSICTHEMETRAY
 title Installation de ClassicThemeTray...
+if exist "%userprofile%\TSS\Classic\ClassicThemeTray.exe" (goto :WCTC)
+if exist "%userprofile%\TSS\Classic\ClassicThemeTray_old.exe" (goto :WCTC)
 if not exist "C:\TSS" (mkdir "C:\TSS")
 if not exist "%userprofile%\TSS" (mkdir "%userprofile%\TSS")
 echo(
@@ -143,6 +144,7 @@ title En attente de confirmation...
 
 :WCTC
 title Installation de WinClassicThemeConfig...
+if exist "%userprofile%\TSS\CTC\Themes_W10.exe" (goto :WINAEROTHEMESWITCHER)
 if not exist "C:\TSS" (mkdir "C:\TSS")
 if not exist "%userprofile%\TSS" (mkdir "%userprofile%\TSS")
 echo(
@@ -169,6 +171,7 @@ title En attente de confirmation...
 
 :WINAEROTHEMESWITCHER
 title Installation de WinaeroThemeSwitcher...
+if exist "%userprofile%\TSS\WTS\ThemeSwitcher.exe" (goto :CLASSICTASKMGR)
 if not exist "C:\TSS" (mkdir "C:\TSS")
 if not exist "%userprofile%\TSS" (mkdir "%userprofile%\TSS")
 
@@ -202,6 +205,7 @@ pause
 
 :CLASSICTASKMGR
 title Installation de ClassicTaskManager...
+if exist "C:\Program Files\ClassicTaskmgr\tm.exe" (goto :Windhawks)
 if not exist "C:\TSS" (mkdir "C:\TSS")
 echo(
 echo     Le téléchargement de "tm_cfg_win8_win10.zip" est en progression ...
@@ -217,25 +221,22 @@ echo ---------------------------------------------------------------------------
 echo Si l’installation du gestionnaire des tâches classique c’est correctement déroulée, vous pouvez continuer l’installation.
 echo ----------------------------------------------------------------------------------------------------------------------------
 echo.
+set /P c=Voulez vous continuer l'installation ?[Y\N]?
+if /I "%c%" EQU "Y" (goto :CLASSICTASKMGR2)
+if /I "%c%" EQU "N" (goto :MENU)
+:CLASSICTASKMGR2
 if exist "C:\Program Files\ClassicTaskmgr\tm.exe" (echo le Gestionnaire des tâches classique a été correctement installé
-goto :SCTM) else (echo le Gestionnaire des tâches classique n’a pas été installé correctement. Veuillez réessayer.
+goto :Windhawks) else (echo le Gestionnaire des tâches classique n’a pas été installé correctement. Veuillez réessayer.
 goto :RCTM)
 :RCTM
 set /P c=Voulez vous réessayer ?[Y\N]?
 if /I "%c%" EQU "Y" (goto :CLASSICTASKMGR)
 if /I "%c%" EQU "N" (goto :MENU)
 :SCTM
-echo.
-echo     Les programmes requis ont été correctement installés
-echo.
-echo     Le script d’installation va maintenant installer les tâches planifiées.
-echo.
-set /P c=Voulez-vous Continuer ?[Y\N]?
-if /I "%c%" EQU "Y" (goto :Windhawks)
-if /I "%c%" EQU "N" (goto :ABORT)
 
 :Windhawks
 title Installation de Windhawks...
+if exist "C:\Program Files\Windhawk\windhawk.exe" (goto :SWindhawks)
 if not exist "C:\TSS" (mkdir "C:\TSS")
 if not exist "%userprofile%\TSS" (mkdir "%userprofile%\TSS")
 echo(
@@ -253,11 +254,11 @@ echo Si l’installation de Windhawks s’est correctement déroulée, vous pouv
 echo -------------------------------------------------------------------------------------------------
 echo.
 
-if not exist "%userprofile%\TSS\CTC" (mkdir "%userprofile%\TSS\CTC")
+set /P c=Voulez vous continuer l'installation ?[Y\N]?
+if /I "%c%" EQU "Y" (goto :Windhawks2)
+if /I "%c%" EQU "N" (goto :MENU)
 
-if exist C:\TSS\windhawk_setup.exe (move "C:\TSS\windhawk_setup.exe" "%userprofile%\TSS\CTC") else (echo Windhawks n’est pas dans le dossier du script d’installation en cours d’exécution. Veuillez réassayer.
-goto :RWindhawks)
-
+:Windhawks2
 if exist "C:\Program Files\Windhawk\windhawk.exe" (echo Windhawk a été correctement installé
 goto :SWindhawks) else (echo Windhawk n’a pas été installé correctement. Veuillez réessayer.
 goto :RWindhawks)
@@ -267,14 +268,20 @@ set /P c=Voulez vous réessayer ?[Y\N]?
 if /I "%c%" EQU "Y" (goto :Windhawks)
 if /I "%c%" EQU "N" (goto :MENU)
 
+:SWindhawks
+echo.
+echo     Les programmes requis ont été correctement installés
+echo.
+echo     Le script d’installation va maintenant installer les tâches planifiées.
+echo.
 set /P c=Voulez-vous Continuer ?[Y\N]?
 if /I "%c%" EQU "Y" (goto :SCHDTASKS)
 if /I "%c%" EQU "N" (goto :ABORT)
 
 ::*********************************************************************************
-:Download <url> <File>
-Powershell.exe -command "(New-Object System.Net.WebClient).DownloadFile('%1','%2')"
-exit /b
+:::Download <url> <File>
+::Powershell.exe -command "(New-Object System.Net.WebClient).DownloadFile('%1','%2')"
+::exit /b
 ::*********************************************************************************
 
 :SCHDTASKS
@@ -364,12 +371,13 @@ echo     Déplacement des scripts...
 echo.
 ren "%userprofile%\TSS\classic\classicthemetray.exe" classicthemetray_old.exe
 ren "%userprofile%\tss\basic\uxsms.exe" uxsms_old.exe
+mkdir "%userprofile%\TSS\INSTALL"
 move "%cd%\Explorer_Restart" "%userprofile%\TSS\Explorer_Restart"
-move "%cd%\INSTALL" "%userprofile%\INSTALL"
 move "%cd%\Installation_Test_Scripts" "%userprofile%\TSS\Installation_Test_Scripts"
 move "%cd%\Switcher_Scripts" "%userprofile%\TSS\Switcher_Scripts"
 move "%cd%\Themes" "%userprofile%\TSS\Themes"
 move "%cd%\Themes_Auto" "%userprofile%\TSS\Themes_Auto"
+move "%cd%\Themes_Files" "%userprofile%\TSS\Themes_Files"
 move "basic.xml" "%userprofile%\TSS\INSTALL\basic.xml"
 move "classic.xml" "%userprofile%\TSS\INSTALL\classic.xml"
 move "classic2.xml" "%userprofile%\TSS\INSTALL\classic2.xml"
@@ -448,12 +456,8 @@ curl "https://github.com/arukateru/BasicThemer5/releases/download/1/uxsms.exe" -
 
 if not exist "%userprofile%\TSS\Basic" (mkdir "%userprofile%\TSS\Basic")
 
-if exist C:\TSS\uxsms.exe (move "C:\TSS\Basic\uxsms.exe" "%userprofile%\TSS\Basic") else (echo BasicThemer2 n’est pas dans le dossier du script d’installation en cours d’exécution. Veuillez réassayer.
+if exist C:\TSS\uxsms.exe (move "C:\TSS\uxsms.exe" "%userprofile%\TSS\Basic") else (echo BasicThemer2 n’est pas dans le dossier du script d’installation en cours d’exécution. Veuillez réassayer.
 goto :RBT5_R)
-echo.
-echo Suppresion du dossier temporaire...
-echo.
-rmdir /s /q C:\TSS\Basic
 
 if exist "%userprofile%\TSS\Basic\uxsms.exe" (echo BasicThemer5 à été correctement réparé
 goto :SBT5_R) else (goto :QBT5_R)
@@ -617,10 +621,18 @@ rmdir /s /q "%userprofile%\TSS\Installation_Test_Scripts"
 rmdir /s /q "%userprofile%\TSS\Switcher_Scripts"
 rmdir /s /q "%userprofile%\TSS\Themes"
 rmdir /s /q "%userprofile%\TSS\Themes_Auto"
+rmdir /s /q "%userprofile%\TSS\Themes_Files"
+rmdir /s /q "%userprofile%\TSS\Basic"
+rmdir /s /q "%userprofile%\TSS\Classic"
+rmdir /s /q "%userprofile%\TSS\CTC"
+rmdir /s /q "%userprofile%\TSS\WTS"
 del "%userprofile%\TSS\INSTALL\Apps.xml"
 del "%userprofile%\TSS\INSTALL\Basic.xml"
 del "%userprofile%\TSS\INSTALL\Classic.xml"
 del "%userprofile%\TSS\INSTALL\Classic2.xml"
+del "%userprofile%\TSS\INSTALL\USERINIT_VALUE_RESTORE.exe"
+del "%userprofile%\TSS\INSTALL\disable-dwm-extended-frames.c"
+del "%userprofile%\TSS\INSTALL\userinit.txt"
 
 title Restauration de la clé DefaultColors\Standard...
 REG RESTORE "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\DefaultColors\Standard" DefaultColors-Standard.hiv
