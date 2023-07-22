@@ -4,7 +4,7 @@ chcp 65001 > nul
 echo ************************************************************
 echo *                    Windows 10 Aero                       *
 echo *                                                          *
-echo * Appuyer sur I pour plus d'informations, C pour continuer *
+echo * Appuyer sur I pour plus d´informations, C pour continuer *
 echo ************************************************************
 echo.
 
@@ -16,8 +16,8 @@ if "%errorlevel%"=="2" goto :APPLY
 echo.
 echo **********************************************************************
 echo * Auteur : Equipe de design de Microsoft                             *
-echo * Type de thème : DWM-Effets, style visuel Windows 10 Aero           *
-echo * Paramètres définis : Il s'agit du thème par défaut dans Windows 10 *
+echo * Type de thème : DWM-Effect, style visuel Windows 10 Aero           *
+echo * Paramètres définis : Il s´agit du thème par défaut dans Windows 10 *
 echo **********************************************************************
 echo.
 
@@ -28,9 +28,9 @@ goto :THM)
 if /I "%c%" EQU "N" (goto :ABORT)
 
 :THM
-Start %userprofile%\TSS\WTS\ThemeSwitcher.exe "C:\Windows\Resources\Themes\aero.theme"
+"%userprofile%\TSS\WTS\ThemeSwitcher.exe" "C:\Windows\Resources\Themes\aero.theme"
 
-%userprofile%\TSS\CTC\Themes_W10.exe @appearance /Apply "Win10 - Aero" "Normal"
+start "" /D "%userprofile%\TSS\CTC" "Themes_W10.exe" @appearance /Apply "Win10 - Aero" "Normal"
 
 call "%userprofile%\TSS\Explorer_Restart\Explorer_Restart_FR.bat"
 
