@@ -4,7 +4,7 @@ chcp 65001 > nul
 echo ************************************************************
 echo *                 Windows 10 Aero Basic                    *
 echo *                                                          *
-echo * Appuyer sur I pour plus d'informations, C pour continuer *
+echo * Appuyer sur I pour plus d´informations, C pour continuer *
 echo ************************************************************
 echo.
 
@@ -14,11 +14,11 @@ if "%errorlevel%"=="2" goto :APPLY
 
 :INF
 echo.
-echo ********************************************************************************************
-echo * Auteur : Equipe de design de Microsoft                                                   *
-echo * Type de thème : Basique, style visuel Windows 10 Aero                                    *
-echo * Paramètres définis : Il s'agit du thème par défaut dans Windows 10, mais en mode Basique *
-echo ********************************************************************************************
+echo ******************************************************************************************
+echo * Auteur : Equipe de design de Microsoft                                                 *
+echo * Type de thème : Basic, style visuel Windows 10 Aero                                    *
+echo * Paramètres définis : Il s´agit du thème par défaut dans Windows 10, mais en mode Basic *
+echo ******************************************************************************************
 echo.
 
 :APPLY
@@ -28,9 +28,9 @@ goto :THM)
 if /I "%c%" EQU "N" (goto :ABORT)
 
 :THM
-Start %userprofile%\TSS\WTS\ThemeSwitcher.exe "C:\Windows\Resources\Themes\aero.theme"
+"%userprofile%\TSS\WTS\ThemeSwitcher.exe" "C:\Windows\Resources\Themes\aero.theme"
 
-%userprofile%\TSS\CTC\Themes_W10.exe @appearance /Apply "Windows10 - Aero" "Normal"
+start "" /D "%userprofile%\TSS\CTC" "Themes_W10.exe" @appearance /Apply "Win10 - Aero" "Normal"
 
 call "%userprofile%\TSS\Explorer_Restart\Explorer_Restart_FR.bat"
 
