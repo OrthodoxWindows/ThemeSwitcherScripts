@@ -20,7 +20,6 @@ if /I "%c%" EQU "N" (goto :ABORT)
 :PROGRAMS
 title Installation des programmes...
 color 9F
-ÿ ho?
 echo Voulez-vous installer les programmes requis ?
 echo.
 echo Vous avez besoin de Curl installé pour pour cette étape de l’installation
@@ -30,7 +29,7 @@ if /I "%c%" EQU "N" (goto :ABORT)
 
 :PROGRAMS_INSTALL
 if exist "C:\Windows\system32\curl.exe" (echo Curl est installé sur votre système. L’installation peut se poursuivre.
-goto :BASICTHEMER2) else (echo Curl n’est pas pas installé sur votre système. Veuillez installer Curl)
+goto :BASICTHEMER5) else (echo Curl n’est pas pas installé sur votre système. Veuillez installer Curl)
 echo.
 echo https://curl.se/windows/
 echo https://devstory.net/11617/installer-curl-sur-windows
@@ -40,11 +39,8 @@ goto :PROGRAMS
 ::ajouter l'installation automatique de Curl
 
 :BASICTHEMER5
-pause
 title Installation de BasicThemer5...
-if not exist "C:\TSS" (mkdir "C:\TSS")
 if not exist "%userprofile%\TSS" (mkdir "%userprofile%\TSS")
-
 echo(
 echo     Le téléchargement de "uxsms.exe" est en progression ...
 echo.
@@ -53,12 +49,9 @@ curl "https://github.com/arukateru/BasicThemer5/releases/download/1/uxsms.exe" -
 
 if not exist "%userprofile%\TSS\Basic" (mkdir "%userprofile%\TSS\Basic")
 
-if exist C:\TSS\uxsms.exe (move "C:\TSS\Basic\uxsms.exe" "%userprofile%\TSS\Basic") else (echo BasicThemer5 n’est pas dans le dossier du script d’installation en cours d’exécution. Veuillez réassayer.
+if exist C:\TSS\uxsms.exe (move "C:\TSS\uxsms.exe" "%userprofile%\TSS\Basic") else (echo BasicThemer5 n’est pas dans le dossier du script d’installation en cours d’exécution. Veuillez réassayer.
 goto :RBT5)
-echo.
-echo Suppresion du dossier temporaire...
-echo.
-rmdir /s /q C:\TSS\Basic
+
 if exist "%userprofile%\TSS\Basic\uxsms.exe" (echo BasicThemer5 a été correctement installé
 goto :SBT5) else (echo BasicThemer5 n’a pas été installé correctement. Veuillez réessayer.
 goto :RBT5)
@@ -72,7 +65,6 @@ pause
 
 :CLASSICTHEMETRAY
 title Installation de ClassicThemeTray...
-if not exist "C:\TSS" (mkdir "C:\TSS")
 if not exist "%userprofile%\TSS" (mkdir "%userprofile%\TSS")
 echo(
 echo     Le téléchargement de "ClassicThemeTray.exe" est en progression ...
@@ -93,8 +85,8 @@ set /P c=Voulez vous réessayer ?[Y\N]?
 if /I "%c%" EQU "Y" (goto :CLASSICTHEMETRAY)
 if /I "%c%" EQU "N" (goto :MENU)
 :SCTT
-pause
 title En attente de confirmation...
+pause
 
 :WCTC
 title Installation de WinClassicThemeConfig...
@@ -124,7 +116,6 @@ title En attente de confirmation...
 
 :WINAEROTHEMESWITCHER
 title Installation de WinaeroThemeSwitcher...
-if not exist "C:\TSS" (mkdir "C:\TSS")
 if not exist "%userprofile%\TSS" (mkdir "%userprofile%\TSS")
 
 echo(
@@ -156,28 +147,52 @@ title En attente de confirmation...
 pause
 
 :CLASSICTASKMGR
-title Vérification de l'installation de ClassicTaskManager...
+title Installation de ClassicTaskManager...
+if exist "C:\Program Files\ClassicTaskmgr\tm.exe" (goto :Windhawks)
+echo(
+echo     Le téléchargement de "tm_cfg_win8_win10.zip" est en progression ...
+echo.
+curl "https://web.archive.org/web/20220123013838/https://win7games.com/download/tm_cfg_win8_win10.zip" --output "C:\TSS\tm_cfg_win8_win10.zip"
+if exist C:\TSS\tm_cfg_win8_win10.zip (powershell.exe Expand-Archive -Path C:\TSS\tm_cfg_win8_win10.zip -DestinationPath "C:\TSS"
+start C:\TSS\tm_cfg_win8-win10.exe) else (echo Le Gestionnaire des tâches classique n’est pas dans le dossier du script d’installation en cours d’exécution. Veuiller réassayer.
+goto :RCTM)
+echo.
+echo     Veuillez installer le gestionnaire des tâches classique
+echo.
+echo ----------------------------------------------------------------------------------------------------------------------------
+echo Si l’installation du gestionnaire des tâches classique c’est correctement déroulée, vous pouvez continuer l’installation.
+echo ----------------------------------------------------------------------------------------------------------------------------
+echo.
+set /P c=Voulez vous continuer l'installation ?[Y\N]?
+if /I "%c%" EQU "Y" (goto :CLASSICTASKMGR2)
+if /I "%c%" EQU "N" (goto :MENU)
+:CLASSICTASKMGR2
 if exist "C:\Program Files\ClassicTaskmgr\tm.exe" (echo le Gestionnaire des tâches classique a été correctement installé
-goto :SCTM) else (echo le Gestionnaire des tâches classique n’a pas été installé correctement. Veuillez exécuter le script INSTALL.EXE sur la sessio utilisateur où à été installé en premier ThemeSwitcherScripts.
-goto :ABORT)
+goto :Windhawks) else (echo le Gestionnaire des tâches classique n’a pas été installé correctement. Veuillez réessayer.
+goto :RCTM)
+:RCTM
+set /P c=Voulez vous réessayer ?[Y\N]?
+if /I "%c%" EQU "Y" (goto :CLASSICTASKMGR)
+if /I "%c%" EQU "N" (goto :MENU)
 :SCTM
-echo.
-echo     Les programmes requis ont été correctement installés
-echo.
-echo     Le script d’installation va maintenant installer les tâches planifiées.
-echo.
-set /P c=Voulez-vous Continuer ?[Y\N]?
-if /I "%c%" EQU "Y" (goto :Windhawks)
-if /I "%c%" EQU "N" (goto :ABORT)
 
 :Windhawks
 title Installation de Windhawks...
-if not exist "C:\TSS" (mkdir "C:\TSS")
+if exist "C:\Program Files\Windhawk\windhawk.exe" (goto :SCHDTASKS)
+echo.
+echo Windhawks est un programme relativement volumineux, vérifiez la capacité de votre disque dur avant de lancer l’installation
+echo Vous n’êtes pas obligé d’installer Windhawks, mais cela est recommandé,
+echo car les thèmes classique et basique risques de mal s’afficher sans des modifications apportés par des mods disponibles dans Windhawks
+echo.
+set /P c=Voulez vous installer Windhawks ?[Y\N]?
+if /I "%c%" EQU "Y" (goto :Windhawks1)
+if /I "%c%" EQU "N" (goto :SWindhawks)
+
+:Windhawks1
 if not exist "%userprofile%\TSS" (mkdir "%userprofile%\TSS")
 echo(
 echo     Le téléchargement de "windhawk_setup.exe" est en progression ...
 echo.
-
 curl "https://ramensoftware.com/downloads/windhawk_setup.exe" -L --output "C:\TSS\windhawk_setup.exe"
 if exist C:\TSS\windhawk_setup.exe (start C:\TSS\windhawk_setup.exe) else (echo Windhawks n’est pas dans le dossier du script d’installation en cours d’exécution. Veuiller réassayer.
 goto :RWindhawks)
@@ -190,6 +205,7 @@ echo ---------------------------------------------------------------------------
 echo.
 
 if not exist "%userprofile%\TSS\CTC" (mkdir "%userprofile%\TSS\CTC")
+pause
 
 if exist C:\TSS\windhawk_setup.exe (move "C:\TSS\windhawk_setup.exe" "%userprofile%\TSS\CTC") else (echo Windhawks n’est pas dans le dossier du script d’installation en cours d’exécution. Veuillez réassayer.
 goto :RWindhawks)
@@ -203,14 +219,15 @@ set /P c=Voulez vous réessayer ?[Y\N]?
 if /I "%c%" EQU "Y" (goto :Windhawks)
 if /I "%c%" EQU "N" (goto :MENU)
 
-set /P c=Voulez-vous Continuer ?[Y\N]?
+:SWindhawks
+set /P c=Voulez-vous installer les tâches planifiés ?[Y\N]?
 if /I "%c%" EQU "Y" (goto :SCHDTASKS)
 if /I "%c%" EQU "N" (goto :ABORT)
 
 ::*********************************************************************************
-:Download <url> <File>
-Powershell.exe -command "(New-Object System.Net.WebClient).DownloadFile('%1','%2')"
-exit /b
+:::Download <url> <File>
+::Powershell.exe -command "(New-Object System.Net.WebClient).DownloadFile('%1','%2')"
+::exit /b
 ::*********************************************************************************
 
 :SCHDTASKS
@@ -235,12 +252,15 @@ echo     Déplacement des scripts...
 echo.
 ren "%userprofile%\TSS\classic\classicthemetray.exe" classicthemetray_old.exe
 ren "%userprofile%\TSS\basic\uxsms.exe" uxsms_old.exe
+mkdir "%userprofile%\TSS\INSTALL"
+del "%cd%\INSTALL.EXE"
+del "%cd%\MOVE_INSTALL_SCRIPT.EXE"
 move "%cd%\Explorer_Restart" "%userprofile%\TSS\Explorer_Restart"
-move "%cd%\INSTALL" "%userprofile%\INSTALL"
 move "%cd%\Installation_Test_Scripts" "%userprofile%\TSS\Installation_Test_Scripts"
 move "%cd%\Switcher_Scripts" "%userprofile%\TSS\Switcher_Scripts"
 move "%cd%\Themes" "%userprofile%\TSS\Themes"
 move "%cd%\Themes_Auto" "%userprofile%\TSS\Themes_Auto"
+move "%cd%\Themes_Files" "%userprofile%\TSS\Themes_Files"
 move "basic.xml" "%userprofile%\TSS\INSTALL\basic.xml"
 move "classic.xml" "%userprofile%\TSS\INSTALL\classic.xml"
 move "classic2.xml" "%userprofile%\TSS\INSTALL\classic2.xml"
@@ -248,7 +268,7 @@ move "apps.xml" "%userprofile%\TSS\INSTALL\apps.xml"
 move "userinit.txt" "%userprofile%\TSS\INSTALL\userinit.txt"
 move "disable-dwm-extended-frames.c" "%userprofile%\TSS\INSTALL\disable-dwm-extended-frames.c"
 move "DefaultColors-Standard.hiv" "%userprofile%\TSS\INSTALL\DefaultColors-Standard.hiv"
-move "INSTALL_ANOTHER_USERS.exe" "C:\TSS\INSTALL_ANOTHER_USERS.exe"
+xcopy "INSTALL_ANOTHER_USERS.exe" "C:\TSS\INSTALL_ANOTHER_USERS.exe"
 move "USERINIT_VALUE_RESTORE.exe" "%userprofile%\TSS\INSTALL\USERINIT_VALUE_RESTORE.exe"
 ::move "OPTIONAL_TOOLS.exe" "%userprofile%\TSS\INSTALL\OPTIONAL_TOOLS.exe"
 
@@ -273,5 +293,6 @@ goto :END
 ::finir
 
 :ABORT
+echo Installation annulée
 goto :END
 :END
