@@ -1,0 +1,96 @@
+[Theme]
+; Windows Standard - IDS_THEME_DISPLAYNAME_STANDARD
+DisplayName=Windows Standard
+BrandImage=
+SetLogonBackground=0
+
+; Computer - SHIDI_SERVER
+[CLSID\{20D04FE0-3AEA-1069-A2D8-08002B30309D}\DefaultIcon]
+DefaultValue=%SystemRoot%\System32\imageres.dll,-109
+
+; Documents - SHIDI_USERFILES
+[CLSID\{59031A47-3F72-44A7-89C5-5595FE6B30EE}\DefaultIcon]
+DefaultValue=%SystemRoot%\System32\shell32.dll,-235
+
+; Network - SHIDI_MYNETWORK
+[CLSID\{F02C1A0D-BE21-4350-88B0-7367FC96EF3C}\DefaultIcon]
+DefaultValue=%SystemRoot%\System32\imageres.dll,-25
+
+; Recycle Bin - SHIDI_RECYCLERFULL SHIDI_RECYCLER
+[CLSID\{645FF040-5081-101B-9F08-00AA002F954E}\DefaultIcon]
+Full=%SystemRoot%\System32\imageres.dll,-54
+Empty=%SystemRoot%\System32\imageres.dll,-55
+
+[Control Panel\Colors]
+ActiveBorder=212 208 200
+ActiveTitle=10 36 106
+AppWorkspace=128 128 128
+Background=58 110 165
+ButtonAlternateFace=181 181 181
+ButtonDkShadow=64 64 64
+ButtonFace=212 208 200
+ButtonHilight=255 255 255
+ButtonLight=212 208 200
+ButtonShadow=128 128 128
+ButtonText=0 0 0
+GradientActiveTitle=166 202 240
+GradientInactiveTitle=192 192 192
+GrayText=128 128 128
+Hilight=10 36 106
+HilightText=255 255 255
+HotTrackingColor=10 36 106
+InactiveBorder=212 208 200
+InactiveTitle=128 128 128
+InactiveTitleText=212 208 200
+InfoText=0 0 0
+InfoWindow=255 255 225
+Menu=212 208 200
+MenuBar=212 208 200
+MenuHilight=10 36 106
+MenuText=0 0 0
+Scrollbar=212 208 200
+TitleText=255 255 255
+Window=255 255 255
+WindowFrame=0 0 0
+WindowText=0 0 0
+HotTracking=58 110 165
+
+[Control Panel\Cursors]
+Arrow=
+Help=
+AppStarting=
+Wait=
+NWPen=
+No=
+SizeNS=
+SizeWE=
+Crosshair=
+IBeam=
+SizeNWSE=
+SizeNESW=
+SizeAll=
+UpArrow=
+DefaultValue=Windows default
+Link=
+
+[Control Panel\Desktop]
+Wallpaper=
+TileWallpaper=0
+WallpaperStyle=10
+Pattern=
+
+[MasterThemeSelector]
+MTSM=DABJDKT
+ThemeColorBPP=4
+
+[VisualStyles]
+Path=%SystemRoot%\resources\Themes\Aero\AeroLite.msstyles
+ColorStyle=@themeui.dll,-854
+Size=@themeui.dll,-2019
+ColorizationColor=0XFF0A246A
+Transparency=0
+Composition=0
+SystemMode=Light
+
+[boot]
+SCRNSAVE.EXE=
