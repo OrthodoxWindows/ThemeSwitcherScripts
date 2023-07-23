@@ -8,10 +8,10 @@ echo **********************************************
 echo * Voulez-vous restaurer la valeur userinit ? *
 echo **********************************************
 echo.
-echo  Cela rendra peut-être ThemeSwitcherScripts innopérent.
+echo  Cela rendra ThemeSwitcherScripts innopérent.
 echo.
-echo             Appuyez sur Y pour confirmer,
-echo                   N pour annuler.
+echo        Appuyez sur Y pour confirmer,
+echo              N pour annuler.
 echo.
 
 CHOICE /C YN
