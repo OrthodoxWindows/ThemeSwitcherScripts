@@ -4,8 +4,6 @@
 
 EN:
 
-Collection of batch scripts to change the appearance of the Windows 10 1809+ (Windows 8+ in the future) user interface. An extension of the .theme ini files.
-
 Why this project:
 
 Windows allows a great capacity for customization; only, few of these functions are supported natively. The purpose of ThemeSwitcherScript and to be able to allow the user to patch his system with the addition of many customization tools at once, then to be able to apply themes natively supporting several customization tools.
@@ -13,43 +11,35 @@ Finally, ThemeSwitcherScripts should facilitate the automation of Windows themes
 
 For creators, this means writing scripts on a defined template, which allows the user to apply their theme/visual style very easily. The goal is to remove the confusion between customization tools, and potentially some misunderstandings created by this confusion.
 
-Supported tools are, or will be added soon:
-- All libre/freeware visual style customization tools
-- Many taskbar customization tools
-- Many file explorer customization tools
+Supported tools are:
+- Switching to Basic and Classic themes, using the ClassicThemeTray and BasicThemer5 tools. Credit to Spitfire_x86 and Alcatel.
+- Change of theme (for classic elements) via WinClassicThemeConfig. Credit to Franco Tortoriello.
+- The change of .theme file (supported natively by Windows), with the WinaeroThemeSwitcher tool. Credit to Sergey Tkachenko.
+- Automatic Windhawks mod toggle DISABLE-DWM-EXTENDED-FRAMES., useful for Basic and Classic themes. Credit to Taniko Yamamoto for the mods, and of course to Ramen Software, the creator of Windhawks.
 
-To be able to use these scripts, you must have followed these steps :
+In the future, the following tools will be supported:
+- WinPaletter, to allow more advanced theme switching
+- Toggle other Windhawk mods
+- The toggle of some Explorer customization tools
+- The switching of certain registry keys
 
-So here is the way to add multi-user support to ThemeSwitcherScript. That is, the ability to simultaneously run, for example, the DWM-styled theme (default theme) on User A, the Basic theme on User B, and the Classic theme on User C.
+A guide for theme makers, and maybe an ordering system to come.
+For now, only Windows 10 themes are included by default. Windows 11 themes will be included in the future.
 
-Thanks to @anixx for the original idea of the classic theme by scheduled tasks ( winclassic.boards.net/thread/990/windows-classic-theme-on-1903 ).
+Installation :
 
-1. move _uxsms.exe_ to _%userprofile%\TSS\basic_
-2. move _classicthemetray.exe_ to _%userprofile%\TSS\classic_
-3. Repeat copying _uxsms.exe_ to _%userprofile%\TSS\basic_ and _classicthemetray.exe_ to _%userprofile%\TSS\classic_ for all other user accounts
-4. Import on the task scheduler the files : Apps.xml, Basic.xml, Classic.xml and Classic2.xml
-5. Import this registry file ( __/!\ WARNING, it is important to save the previous key before modifying /!\__ ) :
+1. Check your installation. ThemeSwitcherScripts can work on all versions of Windows 10 and 11, but currently works best in the latest versions of Windows 10. If you are using an older version of Windows 10, you will need to install Curl first. Curl is included by default from Windows 10 1803/Windows Server 2019.
+2. Run INSTALL.EXE, and follow the instructions.
+3. If your system contains several users, execute C:\TSS\INSTALL_ANOTHERS_USER.EXE after the installation for the 1st user, in the concerned session.
+4. Install Windhawks mods "Disable DWM Extended Frames", "Non Immersive Taskbar Context Menu" and "Disable Immersive Context Menus". "Disable DWM Extended Frames" is not included in the Windhawks store, so you have to install it by clicking on "Create a new mod" in Windhawks, then copy and paste the text from the "DISABLE-DWM-EXTENDED-FRAMES.C" file into the editor. Next, compile the mod.
+6. Enjoy !
 
-Windows Registry Editor Version 5.00
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon]
-"Userinit"=""
+Limitations :
+- ThemeSwitcherScript supports multi-user systems, but with one limitation: avoid using multiple user sessions simultaneously. This exposes you to a black screen on login, and it disrupts Windhawks, which runs in single-user mode. Additionally, it is important that all user accounts have administrative privileges. ThemeSwitcherScript is therefore currently not usable on public posts such as cybercafés or media libraries. This may be fixed in the future.
+- The Basic and Classic themes are no longer officially supported by Microsoft, the display of certain programs may not be correct. For explorer display issues, there are ways to fix them, don't hesitate to ask me about it.
+- If you use custom visual styles (.msstyle), use a patcher like [UltraUxThemePatcher](https://mhoefs.eu/software_uxtheme.php?lang=en). SecureUXTheme does not work with ThemeSwitcherScript.
 
-6. Use the scripts contained in ThemeSwitcherScript second release : github.com/OrthodoxWindows/ThemeSwitcherScripts/releases/tag/Release-1.1
-
-It works on my system, but nothing tells me that it will work on other systems. It is therefore important to test it by taking maximum precautions. Please let me know if it works or not. When I'm sure it works, I could write an automatic installation script.
-
-For the moment, it is impossible to install ThemeSwitcherScripts on part of the user accounts. It must be installed on all visible accounts (invisible accounts do not count).
-
-WARNING : The _BUILTIN\Users_ group depends on the system language ; for example, on my system, the group is named _BUILTIN\Utilisateurs_.
-
-To add support for .theme files, you need to copy winaero themeswitcher to _%userprofile%\TSS\themeswitcher\_. Choose the version for Windows 8 (and not for Windows 7). https://winaero.com/winaero-theme-switcher/
-
-Support for custom visual styles:
-Theme Switcher Scripts supports custom visual styles with a system patched with Tools like UXThemePatcher or UXStyle. However, Theme SwitcherScript currently does not support SecureUXTheme (https://github.com/namazso/SecureUxTheme/issues/108).
-
-Multi-user support:
-__It is important to add the files to the user folder with the %userprofile% environment variable, as this allows multi-user support.__ That is, the ability to simultaneously run, for example, the DWM-styled theme (defaut visual style) on User A, the Basic theme on User B, and the Classic theme on User C.
-For the moment, it is impossible to install ThemeSwitcherScripts on part of the user accounts. It must be installed on all visible accounts (invisible accounts do not count).
+The current version is a pre-release, I cannot guarantee stability, use is at your own risk!
 
 FR:
 
@@ -60,34 +50,32 @@ Enfin, ThemeSwitcherScripts devrait faciliter l'automation des thèmes Windows, 
 
 Pour les créateurs, cela signifie écrire des scripts sur un modèle défini, qui permettent à l'utilisateur d'appliquer sont thème/style visuel très facilement. Le but est d'enlever la confusion entre les outils de personnalisation, et potentiellement certaine incompréhensions créée par cette confusion.
 
-Les outils prise en charge sont, ou seront ajouter prochainement :
-- Tout le outils libres/freeware de personnalisation du style visuel
-- De nombreux outils de personnalisation de la barre des tâches
-- De nombreux outils de personnalisation de l'explorateur de fichiers
+Les outils prise en charge sont :
+- Le basculement vers les thèmes Basique et Classique, à l'aide des outils ClassicThemeTray et BasicThemer5. Crédit à  Spitfire_x86 et à Alcatel.
+- Le changement de thème (pour les éléemnts classiques) via WinClassicThemeConfig. Crédit à Franco Tortoriello.
+- Le changement de fichier .theme (pris en charge nativement par Windows), avec l'outils WinaeroThemeSwitcher. Crédit à Sergey Tkachenko.
+- Le basculement automatique du mod Windhawks DISABLE-DWM-EXTENDED-FRAMES., utile pour les thèmes Basique et Classique. Crédit à Taniko Yamamoto pour le mods, et bien sûr à  Ramen Software, le céateur de Windhawks.
 
-Collection de scripts de commandes Windows pour changer de manière groupée l'apparence de l'interface utilisateur des Windows ultérieurs à Windows 10 1803 (ultérieur à Windows 7 dans le future). Il s'agit en quelque sorte d'une extension des fichier de configuration ini avec l'extension .theme.
+A l'avenir, les outils suivant seron pris en charge :
+- WinPaletter, pour permettre un changement de thème plus avancé
+- Le basculement d'autres mods Windhawk
+- Le basculement de certains outils de peronnalisation de l'Explorateur
+- Le basculement de certaines clefs de registre
 
-Pour pouvoir utiliser ces scripts, vous devez avoir installer dans chaque profile utilisateur :
+Un guide pour les créateurs de thèmes, et peut-être un système de commande à prévu.
+Pour l'instant, seul les thèmes de Windows 10 sont inclus par défaut. Les thèmes de Windows 11 seront inclus à l'avenir.
 
-1. déplacez _uxsms.exe_ dans _%userprofile%\TSS\basic_
-2. déplacez _classicthemetray.exe_ dans _%userprofile%\TSS\classic_
-3. Répétez la copie de _uxsms.exe_ dans _%userprofile%\TSS\basic_ et de _classicthemetray.exe_ dans _%userprofile%\TSS\classic_ pour tout les autres comptes utilisateurs
-4. Importez dans le planificateur de tâches les fichiers Apps.xml, Basic.xml, Classic.xml et Classic2.xml
-5. Importez ce fichier de registre ( __/!\ ATTENTION, il est important de sauvegarder la clef précédente avant d'importer le fichier /!\__ ) 
+Installation :
 
-Windows Registry Editor Version 5.00
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon]
-"Userinit"=""
+1. Vérifiez votre installation. ThemeSwitcherScripts peut fonctionner sur toute les versions de Windows 10 et 11, mais fonctionne pour l'instant mieux dans les dernières versions de Windows 10. Si vous utilisez une version ancienne de Windows 10, il faudras installer Curl auparavant. Curl est inclu par défaut à partir de Windows 10 1803/Windows Server 2019.
+2. Exécutez INSTALL.EXE, et suivez les instructions.
+3. Si votre système contient plusieurs utilisateurs, exécutez C:\TSS\INSTALL_ANOTHERS_USER.EXE après l'instalaltion pour le 1er utilisateur, dans la session concerné.
+4. Installez les mods Windhawks "Disable DWM Extended Frames", "Non Immersive Taskbar Context Menu" et "Disable Immersive Context Menus". "Disable DWM Extended Frames" n'est pas inclu dans la boutique Windhawks, il faut donc l'installer un cliquant sur "Créer un nouveau mod" dans Windhawks, puis en copier-coller le texte du fichier "DISABLE-DWM-EXTENDED-FRAMES.C" dans l'éditeur. Enuite, il faut compiler le mod.
+6. Profitez !
 
-6. Utilisez les scripts contenus dans la version 1.1 de ThemeSwitcherScript : https://github.com/OrthodoxWindows/ThemeSwitcherScripts/releases/tag/Release-1.1
+Limitation :
+- ThemeSwitcherScript supporte les systèmes multi-utilisateur, mais avec une limitation : il faut éviter d'utiliser plusieurs sessions utilisateur simultanément. Cela vous expose à un écran noir à l'ouverture de session, et cela perturbre Windhawks, qui fonctionne en mode mono-utilisateur. De plus, il est important que tout les comptes utilisateurs possèdent les privilèges d'administration. ThemeSwitcherScript n'est donc pour l'instant pas utilisable sur des posts publique tels que les cybercafés ou les médiathèques. Cela sera peut-être corrigé à l'avenir.
+- Les thèmes Basique et Classique ne sont plus supporté officielement par Microsoft, l'affichage de certains programme risque de ne pas être bon. Pour les problèmes d'affichage de l'explorateur, il existe des moyens de les corriger, n'ésitez pas à me poser des questions à ce sujet.
+- Si vous utilisez des styles visuels personnalisés (.msstyle), utiliser un patcher comme [UltraUxThemePatcher](https://mhoefs.eu/software_uxtheme.php?lang=en). SecureUXTheme ne fonctionne pas avec ThemeSwitcherScript.
 
-Cela fonctionne sur mon système, mais rien ne me fait dire que cela fonctionnera sur les autres systèmes. Il est donc important de le tester en prenant un maximum de précautions. N'hésitez pas à m'informer si cela fonctionne ou ne fonctionne pas. Quant je serais sûr que cela fonctionne, je pourais écrire un script d'installation automatique.
-
-Pour ajouter la prise en charge des fichiers .theme, vous devez copier winaero themeswitcher dans _%userprofile%\TSS\themeswitcher\_. Choisisez bien la version pour Windows 8 (et non pas pour Windows 7). https://winaero.com/winaero-theme-switcher/
-
-Support des styles visuels personnalisées :
-Theme Switcher Scripts supporte les styles visuels personnalisés avec un système patché avec des outils comme UXThemePatcher ou UXStyle. Par contre, Theme SwitcherScript ne supporte pour le moment pas SecureUXTheme (https://github.com/namazso/SecureUxTheme/issues/108).
-
-Support Multi-utilisateur :
-__Il est important d'ajouter les fichier dans le dossier utilisateur avec la variable d'envirronement %userprofile%, car cela permet le support multi-utilisateur.__ Cela ajoute la capacité d'exécuter simultanément, par exemple, le thème DWM-styled (style visuel par défaut) sur l'utilisateur A, le thème Basic sur l'utilisateur B et le thème Classic sur l'utilisateur C.
-Pour le moment, il est impossible d'installer ThemeSwitcherScripts sur une partie des comptes utilisateurs. Il faut l'installer sur tout les comptes visible (et non pas les comptes invisibles).
+La version actuelle est une préversion, je ne peut pas garentir la stabilité, l'utilisation est a vos risques et périls !
