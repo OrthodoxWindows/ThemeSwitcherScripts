@@ -34,9 +34,9 @@ if /I "%c%" EQU "N" (goto :ABORT)
 
 start "" /D "%userprofile%\TSS\CTC" "Themes_W10.exe" @appearance /Apply "Windows Standard" "1-Normal"
 
-call "%userprofile%\TSS\Switcher_Scripts\Classic_FR.bat"
+call "%userprofile%\TSS\Switcher_Scripts\Classic.bat"
 
-call "%userprofile%\TSS\Explorer_Restart\Explorer_Restart_FR.bat"
+call "%userprofile%\TSS\Explorer_Restart\Explorer_Restart.bat"
 
 goto :END
 
