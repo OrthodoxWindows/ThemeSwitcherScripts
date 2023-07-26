@@ -24,7 +24,7 @@ echo.
 
 :APPLY
 set /P c=Voulez-vous appliquer le thème Windows 10 Aero - Light ?[Y\N]?
-if /I "%c%" EQU "Y" (call "%userprofile%\TSS\Switcher_Scripts\DWM-Effects_FR.bat"
+if /I "%c%" EQU "Y" (call "%userprofile%\TSS\Switcher_Scripts\DWM-Effects.bat"
 goto :THM)
 if /I "%c%" EQU "N" (goto :ABORT)
 
@@ -33,7 +33,7 @@ if /I "%c%" EQU "N" (goto :ABORT)
 
 start "" /D "%userprofile%\TSS\CTC" "Themes_W10.exe" @appearance /Apply "Win10 - Aero" "Normal"
 
-call "%userprofile%\TSS\Explorer_Restart\Explorer_Restart_FR.bat"
+call "%userprofile%\TSS\Explorer_Restart\Explorer_Restart.bat"
 
 goto :END
 
