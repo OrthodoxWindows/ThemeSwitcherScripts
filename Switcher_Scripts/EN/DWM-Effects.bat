@@ -12,12 +12,6 @@ tasklist | find /i "%BT5%">nul  && (TASKKILL /f /im uxsms.exe) || goto :1
 if exist "%userprofile%"\tss\basic\uxsms.exe (ren "%userprofile%\tss\basic\uxsms.exe" uxsms_old.exe
 echo The basic theme has been disabled) else (echo The basic theme is already disabled)
 
-if exist "%userprofile%"\tss\basic\uxsms.exe (goto :2) else (ren "%userprofile%\tss\basic\uxsms_old.exe" uxsms.exe
-echo The basic theme has been activated)
-:2
-Set BT5=uxsms.exe
-tasklist | find /i "%BT5%">nul  && echo The basic theme is already active || (start "" /D "%USERPROFILE%\TSS\Basic" uxsms.exe)
-
 REG DELETE HKEY_LOCAL_MACHINE\SOFTWARE\Windhawk\Engine\Mods\local@disable-dwm-extended-frames /v Disabled /f
 REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Windhawk\Engine\Mods\local@disable-dwm-extended-frames /v Disabled /t REG_DWORD /d 1
 if exist "%userprofile%"\tss\Task-Scripts\@DDEF.bat" (ren "%userprofile%"\tss\Task-Scripts\@DDEF.bat" @DDEF_old.bat
