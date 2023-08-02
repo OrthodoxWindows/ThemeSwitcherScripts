@@ -24,7 +24,7 @@ echo La composition dans la zone cliente a été activé) else (echo La composit
 
 REG DELETE HKEY_LOCAL_MACHINE\SOFTWARE\Windhawk\Engine\Mods\local@unthemed-nocomposition /v Disabled /f
 REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Windhawk\Engine\Mods\local@unthemed-nocomposition /v Disabled /t REG_DWORD /d 0
-if exist "%userprofile%\tss\Task_Scripts\@UTNC.bat" (echo La composition intégrale dans la zone cliente est déjà activé) else (ren "%userprofile%\tss\Task_Scripts\@UTNC_old.bat" @UTNC.bat
+if exist "%userprofile%\tss\Task_Scripts\@UTNC.bat" (echo La composition intégrale dans la zone cliente est déjà désactivé) else (ren "%userprofile%\tss\Task_Scripts\@UTNC_old.bat" @UTNC.bat
 echo La composition intégrale dans la zone cliente a été désactivé)
 
 if exist "%userprofile%\tss\Task_Scripts\@CTEX.bat" (echo La barre des tâches classique est déjà activé) else (ren "%userprofile%\tss\Task_Scripts\@CTEX_old.bat" @CTEX.bat
