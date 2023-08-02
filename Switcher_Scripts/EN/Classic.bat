@@ -27,5 +27,8 @@ REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Windhawk\Engine\Mods\local@unthemed-nocompos
 if exist "%userprofile%"\tss\Task-Scripts\@UTNC.bat" (ren "%userprofile%"\tss\Task-Scripts\@UTNC.bat" @UTNC_old.bat
 echo Full composition in the client area has been enabled) else (echo Full composition in the client area is already enabled)
 
+if exist "%userprofile%\tss\Task_Scripts\@CTEX.bat" (echo The classic taskbar has ben enabled) else (ren "%userprofile%\tss\Task_Scripts\@CTEX_old.bat" @CTEX.bat
+echo THe classic taskbat are already disabled)
+
 :MSG
 echo Task completed
