@@ -20,7 +20,7 @@ echo Les cadres étendus de DWM ont été désactivés)
 REG DELETE HKEY_LOCAL_MACHINE\SOFTWARE\Windhawk\Engine\Mods\local@untheme /v Disabled /f
 REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Windhawk\Engine\Mods\local@untheme /v Disabled /t REG_DWORD /d 0
 if exist "%userprofile%\tss\Task_Scripts\@UT.bat" (echo La composition dans la zone cliente est déjà activé) else (ren "%userprofile%\tss\Task_Scripts\@UT_old.bat" @UT.bat
-echo La composition dans la zone cliente a été désactivé)
+echo La composition dans la zone cliente a été activé)
 
 REG DELETE HKEY_LOCAL_MACHINE\SOFTWARE\Windhawk\Engine\Mods\local@unthemed-nocomposition /v Disabled /f
 REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Windhawk\Engine\Mods\local@unthemed-nocomposition /v Disabled /t REG_DWORD /d 1
