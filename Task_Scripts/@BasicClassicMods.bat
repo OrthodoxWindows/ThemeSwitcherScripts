@@ -1,9 +1,6 @@
 @echo off
 chcp 65001 > nul
 
-::REG DELETE HKEY_LOCAL_MACHINE\SOFTWARE\Windhawk\Engine\Mods\classic-maximized-windows-fix /v Disabled /f
-::REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Windhawk\Engine\Mods\classic-maximized-windows-fix /v Disabled /t REG_DWORD /d 0
-
 ::Mods Classique
 for /f "tokens=3 " %%i in ('reg query "HKEY_LOCAL_MACHINE\SOFTWARE\Windhawk\Engine\Mods\classic-taskdlg-fix" /v "disabled" ^| find "0x1" ') do REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Windhawk\Engine\Mods\classic-taskdlg-fix /v Disabled /t REG_DWORD /d 0 /f
 for /f "tokens=3 " %%i in ('reg query "HKEY_LOCAL_MACHINE\SOFTWARE\Windhawk\Engine\Mods\classic-uwp-fix" /v "disabled" ^| find "0x0" ') do REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Windhawk\Engine\Mods\classic-uwp-fix /v Disabled /t REG_DWORD /d 1 /f
