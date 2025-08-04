@@ -38,7 +38,7 @@ For now, only Windows 10 themes are included by default. Windows 11 themes will 
 
 - ThemeSwitcherScript supports multi-user systems, but with one limitation: avoid using multiple user sessions simultaneously. This exposes you to a black screen on login, and it disrupts Windhawks, which runs in single-user mode. Additionally, it is important that all user accounts have administrative privileges. ThemeSwitcherScript is therefore currently not usable on public posts such as cybercafés or media libraries. This may be fixed in the future.
 - The Basic and Classic themes are no longer officially supported by Microsoft, the display of certain programs may not be correct. For explorer display issues, there are ways to fix them, don't hesitate to ask me about it.
-- If you use custom visual styles (.msstyle), use a patcher like [UltraUxThemePatcher](https://mhoefs.eu/software_uxtheme.php?lang=en). SecureUXTheme does not work with ThemeSwitcherScript.
+- If you use custom visual styles (.msstyle), use a patcher like [UltraUxThemePatcher](https://mhoefs.eu/software_uxtheme.php?lang=en), or SecureUxTheme
 
 **The current version is a pre-release, I cannot guarantee stability, use is at your own risk !**
 
@@ -78,6 +78,6 @@ Pour l'instant, seul les thèmes de Windows 10 sont inclus par défaut. Les thè
 
 - ThemeSwitcherScript supporte les systèmes multi-utilisateur, mais avec une limitation : il faut éviter d'utiliser plusieurs sessions utilisateur simultanément. Cela vous expose à un écran noir à l'ouverture de session, et cela perturbre Windhawks, qui fonctionne en mode mono-utilisateur. De plus, il est important que tout les comptes utilisateurs possèdent les privilèges d'administration. ThemeSwitcherScript n'est donc pour l'instant pas utilisable sur des posts publique tels que les cybercafés ou les médiathèques. Cela sera peut-être corrigé à l'avenir.
 - Les thèmes Basique et Classique ne sont plus supporté officielement par Microsoft, l'affichage de certains programme risque de ne pas être bon. Pour les problèmes d'affichage de l'explorateur, il existe des moyens de les corriger, n'ésitez pas à me poser des questions à ce sujet.
-- Si vous utilisez des styles visuels personnalisés (.msstyle), utiliser un patcher comme [UltraUxThemePatcher](https://mhoefs.eu/software_uxtheme.php?lang=en). SecureUXTheme ne fonctionne pas avec ThemeSwitcherScript.
+- Si vous utilisez des styles visuels personnalisés (.msstyle), utiliser un patcher comme [UltraUxThemePatcher](https://mhoefs.eu/software_uxtheme.php?lang=en), ou SecureUXTheme.
 
 **La version actuelle est une préversion, je ne peut pas garentir la stabilité, l'utilisation est a vos risques et périls !**
