@@ -1,9 +1,6 @@
 @echo off
 chcp 65001 > nul
 
-::REG DELETE HKEY_LOCAL_MACHINE\SOFTWARE\Windhawk\Engine\Mods\classic-maximized-windows-fix /v Disabled /f
-::REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Windhawk\Engine\Mods\classic-maximized-windows-fix /v Disabled /t REG_DWORD /d 0
-
 for /f "tokens=3 " %%i in ('reg query "HKEY_LOCAL_MACHINE\SOFTWARE\Windhawk\Engine\Mods\win7-command-bar" /v "disabled" ^| find "0x1" ') do REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Windhawk\Engine\Mods\win7-command-bar /v Disabled /t REG_DWORD /d 0 /f
 for /f "tokens=3 " %%i in ('reg query "HKEY_LOCAL_MACHINE\SOFTWARE\Windhawk\Engine\Mods\classic-taskdlg-fix" /v "disabled" ^| find "0x1" ') do REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Windhawk\Engine\Mods\classic-taskdlg-fix /v Disabled /t REG_DWORD /d 0 /f
 for /f "tokens=3 " %%i in ('reg query "HKEY_LOCAL_MACHINE\SOFTWARE\Windhawk\Engine\Mods\classic-uwp-fix" /v "disabled" ^| find "0x0" ') do REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Windhawk\Engine\Mods\classic-uwp-fix /v Disabled /t REG_DWORD /d 1 /f
@@ -18,18 +15,19 @@ for /f "tokens=3 " %%i in ('reg query "HKEY_LOCAL_MACHINE\SOFTWARE\Windhawk\Engi
 for /f "tokens=3 " %%i in ('reg query "HKEY_LOCAL_MACHINE\SOFTWARE\Windhawk\Engine\Mods\dwm-ghost-mods" /v "disabled" ^| find "0x0" ') do REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Windhawk\Engine\Mods\dwm-ghost-mods /v Disabled /t REG_DWORD /d 1 /f
 
 for /f "tokens=3 " %%i in ('reg query "HKEY_LOCAL_MACHINE\SOFTWARE\Windhawk\Engine\Mods\eradicate-immersive-menus" /v "disabled" ^| find "0x1" ') do REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Windhawk\Engine\Mods\eradicate-immersive-menus /v Disabled /t REG_DWORD /d 0 /f
-for /f "tokens=3 " %%i in ('reg query "HKEY_LOCAL_MACHINE\SOFTWARE\Windhawk\Engine\Mods\local@aerexplorer" /v "disabled" ^| find "0x1" ') do REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Windhawk\Engine\Mods\local@aerexplorer /v Disabled /t REG_DWORD /d 0 /f
+for /f "tokens=3 " %%i in ('reg query "HKEY_LOCAL_MACHINE\SOFTWARE\Windhawk\Engine\Mods\aerexplorer\Settings" /v "smalladdress" ^| find "0x0" ') do REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Windhawk\Engine\Mods\aerexplorer\Settings /v smalladdress /t REG_DWORD /d 1 /f
+for /f "tokens=3 " %%i in ('reg query "HKEY_LOCAL_MACHINE\SOFTWARE\Windhawk\Engine\Mods\aerexplorer\Settings" /v "alwayscpl" ^| find "0x0" ') do REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Windhawk\Engine\Mods\aerexplorer\Settings /v alwayscpl /t REG_DWORD /d 1 /f
 for /f "tokens=3 " %%i in ('reg query "HKEY_LOCAL_MACHINE\SOFTWARE\Windhawk\Engine\Mods\legacy-search-bar" /v "disabled" ^| find "0x1" ') do REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Windhawk\Engine\Mods\legacy-search-bar /v Disabled /t REG_DWORD /d 0 /f
 
 for /f "tokens=3 " %%i in ('reg query "HKEY_CURRENT_USER\SOFTWARE\ThemeSwitcherScripts\Settings" /v "Metro" ^| find "0x1" ') do goto :1
 
-for /f "tokens=3 " %%i in ('reg query "HKEY_LOCAL_MACHINE\SOFTWARE\Windhawk\Engine\Mods\local@classic-taskbar-buttons-lite-vs-fork" /v "disabled" ^| find "0x1" ') do REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Windhawk\Engine\Mods\local@classic-taskbar-buttons-lite-vs-fork /v Disabled /t REG_DWORD /d 0 /f
+for /f "tokens=3 " %%i in ('reg query "HKEY_LOCAL_MACHINE\SOFTWARE\Windhawk\Engine\Mods\classic-taskbar-buttons-lite-vs-without-spacing" /v "disabled" ^| find "0x1" ') do REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Windhawk\Engine\Mods\classic-taskbar-buttons-lite-vs-without-spacing /v Disabled /t REG_DWORD /d 0 /f
 for /f "tokens=3 " %%i in ('reg query "HKEY_LOCAL_MACHINE\SOFTWARE\Windhawk\Engine\Mods\local@kill-appframe-uwp" /v "disabled" ^| find "0x1" ') do REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Windhawk\Engine\Mods\local@kill-appframe-uwp /v Disabled /t REG_DWORD /d 0 /f
 for /f "tokens=3 " %%i in ('reg query "HKEY_LOCAL_MACHINE\SOFTWARE\Windhawk\Engine\Mods\win32-tray-clock-experience" /v "disabled" ^| find "0x1" ') do REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Windhawk\Engine\Mods\win32-tray-clock-experience /v Disabled /t REG_DWORD /d 0 /f
 goto :2
 
 :1
-for /f "tokens=3 " %%i in ('reg query "HKEY_LOCAL_MACHINE\SOFTWARE\Windhawk\Engine\Mods\local@classic-taskbar-buttons-lite-vs-fork" /v "disabled" ^| find "0x0" ') do REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Windhawk\Engine\Mods\local@classic-taskbar-buttons-lite-vs-fork /v Disabled /t REG_DWORD /d 1 /f
+for /f "tokens=3 " %%i in ('reg query "HKEY_LOCAL_MACHINE\SOFTWARE\Windhawk\Engine\Mods\classic-taskbar-buttons-lite-vs-without-spacing" /v "disabled" ^| find "0x0" ') do REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Windhawk\Engine\Mods\classic-taskbar-buttons-lite-vs-without-spacing /v Disabled /t REG_DWORD /d 1 /f
 for /f "tokens=3 " %%i in ('reg query "HKEY_LOCAL_MACHINE\SOFTWARE\Windhawk\Engine\Mods\local@kill-appframe-uwp" /v "disabled" ^| find "0x0" ') do REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Windhawk\Engine\Mods\local@kill-appframe-uwp /v Disabled /t REG_DWORD /d 1 /f
 for /f "tokens=3 " %%i in ('reg query "HKEY_LOCAL_MACHINE\SOFTWARE\Windhawk\Engine\Mods\win32-tray-clock-experience" /v "disabled" ^| find "0x0" ') do REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Windhawk\Engine\Mods\win32-tray-clock-experience /v Disabled /t REG_DWORD /d 1 /f
 
@@ -39,3 +37,4 @@ for /f "tokens=3 " %%i in ('reg query "HKEY_LOCAL_MACHINE\SOFTWARE\Windhawk\Engi
 for /f "tokens=3 " %%i in ('reg query "HKEY_LOCAL_MACHINE\SOFTWARE\Windhawk\Engine\Mods\local@untheme" /v "disabled" ^| find "0x0" ') do REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Windhawk\Engine\Mods\local@untheme /v Disabled /t REG_DWORD /d 1 /f
 
 for /f "tokens=3 " %%i in ('reg query "HKEY_LOCAL_MACHINE\SOFTWARE\Windhawk\Engine\Mods\local@unthemed-nocomposition" /v "disabled" ^| find "0x1" ') do REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Windhawk\Engine\Mods\local@unthemed-nocomposition /v Disabled /t REG_DWORD /d 0 /f
+for /f "tokens=3 " %%i in ('reg query "HKEY_CURRENT_USER\SOFTWARE\OpenShell\StartMenu\Settings" /v "CustomTaskbar" ^| find "0x0" ') do REG ADD HKEY_CURRENT_USER\SOFTWARE\OpenShell\StartMenu\Settings /v CustomTaskbar /t REG_DWORD /d 1 /f
